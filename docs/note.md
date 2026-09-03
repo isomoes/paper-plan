@@ -20,31 +20,25 @@
 
 ### RSA factorization attacks
 
-For an attack budget of \(2^b\) operations, the corresponding RSA modulus size is asymptotically:
+For an attack budget of $2^b$ operations, the corresponding RSA modulus size is asymptotically:
 
-| Year | Attack | Computer | RSA modulus bit length for about \(2^b\) work |
+| Year | Attack | Computer | RSA modulus bit length for about $2^b$ work |
 |---|---|---|---|
-| 1978 | Schroeppel's linear sieve | Classical | \((0.5 + o(1))b^2 / \lg b\) bits |
-| 1988 | Number-field sieve | Classical | \((0.016\ldots + o(1))b^3 / (\lg b)^2\) bits |
-| 1994 | Shor's algorithm | Quantum | \(2^{(0.5 + o(1))b}\) bits |
+| 1978 | Schroeppel's linear sieve | Classical | $(0.5 + o(1))b^2 / \lg b$ bits |
+| 1988 | Number-field sieve | Classical | $(0.016\ldots + o(1))b^3 / (\lg b)^2$ bits |
+| 1994 | Shor's algorithm | Quantum | $2^{(0.5 + o(1))b}$ bits |
 
-Thus, classical key sizes grow polynomially with the desired security level, whereas resisting Shor's algorithm would require an impractically exponential RSA key size. These are asymptotic formulas: the \(o(1)\) terms and implementation constants matter greatly at practical security levels such as \(b=128\).
+Thus, classical key sizes grow polynomially with the desired security level, whereas resisting Shor's algorithm would require an impractically exponential RSA key size. These are asymptotic formulas: the $o(1)$ terms and implementation constants matter greatly at practical security levels such as $b=128$.
 
 ### Post-quantum cryptography landscape
 
 ```mermaid
-flowchart TD
-    C[Cryptographers<br/>How can we encrypt, decrypt,<br/>sign, and verify?]
-    S[Functioning systems<br/>AES, RSA, McEliece, Merkle signatures,<br/>ECDSA, HFEv-, NTRU, and others]
-    A[Cryptanalysts<br/>What can an attacker do with<br/>less than 2^b quantum operations?]
-    U[Unbroken systems<br/>AES for b <= 128; McEliece, Merkle signatures,<br/>HFEv-, and NTRU with b^(1+o(1)) parameters]
-    D[Designers and implementors<br/>How small and fast can they be?]
-    E[Efficient systems<br/>Example: HFEv- signature verification<br/>in b^(3+o(1)) time]
-    C --> S
-    A --> U
-    D --> E
-    S -. security evaluation .-> A
-    U -. optimization .-> D
+flowchart LR
+    C["Cryptographers<br/>Design cryptosystems"] --> S["Working systems<br/>AES, RSA, McEliece,<br/>Merkle, ECDSA, NTRU"]
+    S --> A["Cryptanalysts<br/>Attack with < 2^b<br/>quantum operations"]
+    A --> U["Unbroken systems<br/>AES <= 128-bit security;<br/>other systems with b^(1+o(1)) parameters"]
+    U --> D["Designers<br/>Minimize size and time"]
+    D --> E["Efficient systems<br/>HFEv- verification in<br/>b^(3+o(1)) time"]
 ```
 
 The exponents are simplified asymptotic notation. Concrete parameter sizes and performance require a more detailed analysis for each security level.
