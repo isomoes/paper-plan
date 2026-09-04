@@ -16,9 +16,10 @@
 
 - A closer look reveals, however, that there is no justification for the leap from “quantum computers destroy **RSA and DSA and ECDSA**” to “quantum computers destroy cryptography.”
 - Grover’s algorithm forces somewhat larger key sizes for secret-key ciphers, but this eﬀect is essentially uniform across ciphers; today’s fastest pre-quantum **256-bit ciphers** are also the fastest candidates for post-quantum ciphers at a **reasonable security level**. 
+- I chose to focus on public-key examples—a focus shared by most of this book—because quantum computers seem to have very little effect on secret-key cryptography, hash functions, etc. Grover’s algorithm forces somewhat larger key sizes for secret-key ciphers, but this effect is essentially **uniform across ciphers**; today’s fastest pre-quantum 256-bit ciphers are also the fastest candidates for post-quantum ciphers at a reasonable security level. **if ture until 2026 years**
 
 
-### RSA factorization attacks
+### RSA factorization attacks -- example
 
 For an attack budget of $2^b$ operations, the corresponding RSA modulus size is asymptotically:
 
