@@ -2,3 +2,13 @@ local-pdf
 
 # Local literature-search logs and raw verification responses
 /docs/research-pq-symmetric/evidence/
+
+# Compiled documents (kept beside their Typst sources)
+*.pdf
+
+# Local conversion helper and Python cache
+/scripts/build_research_report.py
+/scripts/__pycache__/
+
+# PDF rendering and content-check intermediates
+/tmp/pdfs/
