@@ -1,0 +1,5 @@
+[mcp_servers.apaper-mcp]
+command = "uvx"
+args = ["apaper-mcp"]
+startup_timeout_sec = 120
+tool_timeout_sec = 900
