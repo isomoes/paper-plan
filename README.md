@@ -2,6 +2,11 @@
 
 Planning and tracking research papers
 
+## Research reports
+
+- [后量子对称密码调研：研究方向、热点与论文记录](docs/research-pq-symmetric/survey.md) — 文献截止 2026-09-08，覆盖 14 类方向、54 篇论文；附发表状态核验、模型限制和选题建议。
+- [统一 BibTeX](docs/research-pq-symmetric/references.bib) · [专题索引](docs/research-pq-symmetric/README.md)
+
 ## Academic paper tools
 
 [apaper-mcp](https://github.com/ai4paper/apaper-mcp) is configured for this

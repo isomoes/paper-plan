@@ -1,1 +1,4 @@
 local-pdf
+
+# Local literature-search logs and raw verification responses
+/docs/research-pq-symmetric/evidence/
