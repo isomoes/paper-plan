@@ -32,7 +32,7 @@
 
 查询复杂度、经典数据量、逻辑门数、T-count、T-depth、总深度、逻辑量子位、DW-cost、物理量子位及容错运行时间是不同指标。低成本量子 AES 实现意味着更便宜的攻击 oracle；它不会让 AES 本身变得更安全。也不能单凭 Grover 的平方根加速就把所有具体算法的安全强度机械减半。A02、A04、A08 提供了这些区分的直接研究依据。
 
-## 精选论文（16 篇）
+## 精选论文（23 篇）
 
 ### A01. Q2 结构攻击的基础文献
 
@@ -126,10 +126,10 @@ Kaveh Bashiri; Xavier Bonnetain; Akinori Hosoyamada; Nathalie Lang; André Schro
 ### A09. SMT 自动搜索量子周期区分器
 
 **Quantum Periodic Distinguisher Construction: Symbolization Method and Automated Tool**\
-Qun Liu; Haoyang Wang; Jinliang Wang; Boyun Li; Meiqin Wang. **ASIACRYPT 2025**。
+Qun Liu; Haoyang Wang; Jinliang Wang; Boyun Li; Meiqin Wang. **ASIACRYPT 2025, Part VIII, pp. 224–255**。
 
-- 状态：IACR 元数据注明该会议论文的 major revision；2025-04-15 首发，2025-12-20 最新修订。
-- 来源：[ePrint 2025/681](https://eprint.iacr.org/2025/681)。
+- 状态：正式发表；2026-09-09 补核 DBLP 与 Springer 正式记录。ePrint 2025-04-15 首发，2025-12-20 修订。
+- 来源：[ePrint 2025/681](https://eprint.iacr.org/2025/681)；[DBLP](https://dblp.org/rec/conf/asiacrypt/LiuWWLW25)；[Springer](https://link.springer.com/chapter/10.1007/978-981-95-5125-5_8)。
 - 贡献：符号化表示与 SMT 搜索扩展到未知差分及概率周期，对 GFS、LBlock、TWINE、Skipjack-B、SKINNY 等报告新减轮区分器。
 - 模型/局限：核心 **Q2**；“找到区分器”不自动得到低成本密钥恢复，仍需证明 oracle 可构造、满足周期条件并计算完整成本。
 - 阅读：A；后续：必须与 A15 的前缀实现性/密钥依赖条件并读。
@@ -211,19 +211,98 @@ Youbo Guo; Fengrong Zhang; Lei Liao; Yongzhuang Wei; Baocang Wang; Xiaogang Zhou
 - 模型/局限：属于 **Q1 攻击 oracle 的可用本地组件**；最优性限定门集、无辅助位及目标函数。NCT 门数、Clifford+T 总深度与物理成本不能直接互换。
 - 阅读：A；价值：很新，适合监控和复现，当前不把其摘要最优性宣称当作本次已证明事实。
 
+### A17. AES 线性层与完整 oracle 的深度优化
+
+**Quantum Circuits of AES with a Low-Depth Linear Layer and a New Structure**\
+Haotian Shi; Xiutao Feng. **ASIACRYPT 2024, Part VIII, pp. 358–395**。
+
+- 状态：正式发表；DBLP 会议年为 2024，Springer 首次在线为 2024-12-12，但推荐引文版权年为 2025；这是同一工作。
+- 来源：[DBLP](https://dblp.org/rec/conf/asiacrypt/ShiF24)；[Springer](https://link.springer.com/chapter/10.1007/978-981-96-0944-4_12)；[ePrint 2024/381](https://eprint.iacr.org/2024/381)。
+- 贡献：优化无辅助位的 CNOT 线性层，结合 compressed pipeline 构造 AES 量子电路，补足 A10/A11 之前的完整 oracle 基线。
+- 模型/局限：讨论攻击者本地可逆电路与深度/宽度折衷；逻辑电路优化不能直接换算成容错设备上的运行时间，也不是 AES 加密方案的新安全证明。
+- 阅读：A；2026-09-09 从 DBLP 网页索引发现，再核出版社及原始摘要。
+
+### A18. 六轮 Feistel 的通用量子攻击
+
+**Classical and Quantum Generic Attacks on 6-Round Feistel Schemes**\
+Maya Chartouny; Benoît Cogliati; Jacques Patarin. **SAC 2024, Part II, pp. 85–111**。
+
+- 状态：正式发表；DBLP 按 SAC 2024 编目，Springer 首次在线为 2025-03-13。ePrint 仍写 Preprint，以正式会议记录纠正该滞后状态。
+- 来源：[DBLP](https://dblp.org/rec/conf/sacrypt/ChartounyCP24)；[Springer](https://link.springer.com/chapter/10.1007/978-3-031-82841-6_4)；[ePrint 2024/458](https://eprint.iacr.org/2024/458)。
+- 贡献：将 subset-finding 量子算法与四点结构结合，分析内部为随机函数或随机置换的六轮平衡 Feistel；另改进内部置换场景的经典分析。
+- 模型/局限：理想化 Feistel 的量子区分问题；轮函数类型、半分组长度与 oracle 访问条件必须沿用正文。不能将该结论转述为完整 DES 的密钥恢复。
+- 阅读：A；未重新推导复杂度或复现论文模拟。
+
+### A19. nonce 变化下的单查询 hidden shift
+
+**Single-Query Quantum Hidden Shift Attacks**\
+Xavier Bonnetain; André Schrottenloher. **IACR ToSC 2024(3), pp. 266–297**；ePrint 首发 2023-09-01。
+
+- 状态：正式发表；DBLP 期刊记录、ePrint 与 Inria 作者报告一致。尚未取得可核对的官方 DOI 字段，书目不猜填。
+- 来源：[DBLP](https://dblp.org/rec/journals/tosc/BonnetainS24)；[ePrint 2023/1306](https://eprint.iacr.org/2023/1306)；[Inria 作者报告](https://rex-radar.inria.fr/report/2024/caramba/index.html)。
+- 贡献：针对每次查询都改变隐藏位移的情况，构造单次叠加查询的 Boolean hidden-shift 子程序，并分析 Rocca、Rocca-S、Tiaoxin-346 与 AEGIS-128L 的状态恢复。
+- 模型/局限：**Q2**；“单查询”描述子程序，每次成功概率可能很小，完整攻击仍需独立重复。作者明确不声称破坏这些方案的经典查询安全目标。
+- 阅读：A；适合与 A01/A03 对照 oracle、nonce 与重复成本。
+
+### A20. 多个碰撞对的紧量子搜索
+
+**A Tight Quantum Algorithm for Multiple Collision Search**\
+Xavier Bonnetain; Johanna Loyer; André Schrottenloher; Yixin Shen. **arXiv:2509.13909 / ePrint 2025/1690**。
+
+- 状态：预印本；arXiv v1 为 2025-09-17，DBLP 为 informal 记录；作者公开列表仍列入 Preprints，本轮未确认正式 venue。arXiv DOI 不是录用证据。
+- 来源：[arXiv 原始摘要及版本](https://arxiv.org/abs/2509.13909)；[DBLP](https://dblp.org/rec/journals/iacr/BonnetainLSS25)；[作者发表列表](https://johanna-loyer.github.io/page-personnelle/)。
+- 贡献：扩展 chained quantum walks，以覆盖此前多个碰撞对搜索算法未达到查询下界的参数区间。
+- 模型/局限：随机函数的量子查询模型；查询界的紧性与时间界分开，时间结论依赖 **QRAM**。找多个碰撞对不等于找多个输入共享同一输出的多重碰撞。
+- 阅读：A；可以补足 D3/D6/D7 对批量碰撞与内存假设的比较。
+
+### A21. 有限量子内存下的碰撞搜索基础
+
+**An Efficient Quantum Collision Search Algorithm and Implications on Symmetric Cryptography**\
+André Chailloux; María Naya-Plasencia; André Schrottenloher. **ASIACRYPT 2017, Part II, pp. 211–240**。
+
+- 状态：正式发表；DBLP 会议记录核验作者、页码与 DOI，原始 IACR 摘要核验研究对象。
+- 来源：[DBLP](https://dblp.org/rec/conf/asiacrypt/ChaillouxNS17)；[DOI](https://doi.org/10.1007/978-3-319-70697-9_8)；[ePrint 2017/847](https://eprint.iacr.org/2017/847)。
+- 贡献：以幅度放大研究碰撞、多目标原像及多用户密钥恢复，明确区分 oracle 查询数量、实际时间和经典/量子存储。
+- 模型/局限：不同任务及并行化方案有各自成本；多项式量子内存不代表经典内存也为多项式。不能把抽象碰撞搜索直接称作标准 SHA-2 的结构性破解。
+- 阅读：A；作为 A20 与资源受限哈希安全的较早基线。
+
+### A22. IEEE QCE 的 DES/3DES 可逆攻击电路
+
+**A Quantum Circuit to Execute a Key-Recovery Attack Against the DES and 3DES Block Ciphers**\
+Simone Perriello; Alessandro Barenghi; Gerardo Pelosi. **IEEE QCE 2024, pp. 1–12**。
+
+- 状态：正式发表；DBLP、IEEE 会议录用名单与作者 artifact 共同核验。IEEE DOI 落地页本次访问失败，DOI 来自作者 artifact 的书目字段。
+- 来源：[DBLP](https://dblp.org/rec/conf/qce/PerrielloBP24)；[IEEE 正式名单](https://qce.quantum.ieee.org/2024/wp-content/uploads/sites/8/2024/08/QCE24-Accepted-Technical-Papers-by-Track-QALG-QSYS-QAPP-QPHO-QNET-QTEM-QML.pdf)；[作者代码与书目](https://github.com/paper-codes/2024-QCE)；[DOI](https://doi.org/10.1109/QCE60285.2024.00011)。
+- 贡献：实现用于 DES/3DES 密钥搜索的可逆电路，并公开生成资源指标的代码；提供 IACR 之外的量子工程会议基线。
+- 模型/局限：Grover 电路不依赖 QRAM，而另给的 3DES variant 2 MITM 指标依赖 QRAM；两者应分开比较。旧密码只作成本研究对象，不作为部署推荐。
+- 阅读：A；核读 artifact 说明与书目，未运行代码或复现表格。
+
+### A23. AES-like 哈希的量子 Nostradamus/MITM
+
+**Improved Meet-in-the-Middle Nostradamus Attacks on AES-like Hashing**\
+Xiaoyang Dong; Jian Guo; Shun Li; Phuong Pham; Tianyu Zhang. **IACR ToSC 2024(1), pp. 158–187**。
+
+- 状态：正式发表；DBLP 正式期刊记录、作者研究组列表与 ePrint 摘要核验。ePrint PDF 首页出现占位 DOI，书目采用 DBLP 核实的正式 DOI。
+- 来源：[DBLP](https://dblp.org/rec/journals/tosc/DongGLPZ24)；[正式 DOI](https://doi.org/10.46586/tosc.v2024.i1.158-187)；[ePrint 2024/352](https://eprint.iacr.org/2024/352)；[作者研究组](https://catf.crypto.sg/mitm)。
+- 贡献：改进自动 MITM 搜索中的多目标连接步骤，同时分析经典和量子情形；补充普通原像/碰撞之外的 chosen-target forced-prefix 问题。
+- 模型/局限：结论针对相应 AES-like 哈希实例及轮数；提交目标摘要后连接消息前缀的任务，与标准分组密码密钥恢复不同。
+- 阅读：A；复杂度优势和轮数需按正文实例分别比较。
+
 ## 值得展开的研究题目（本调研提出的建议）
 
 1. **带可验证证书的周期区分器自动搜索。** 以 A05 → A09 → A15 为线索，将符号解转为具体输入族/密钥条件、给出前缀构造证书与小参数穷举验证；再计算完整密钥恢复成本。清晰的研究问题是“工具发现的优势在多大比例密钥与什么查询接口下成立”，而不仅是多增加一轮。发表潜力依赖新理论、系统性缺陷修正或跨多种结构的改进，单次换密码实例较弱。
 
 2. **减少相关态攻击中的 QRACM 假设。** A08 正文直接指出该问题仍开放。可研究受限/分层/流式量子数据访问、预计算折中或电路重算，并比较其相对 Grover 的净优势。挑战是数据制备可能消耗掉 Fourier 型理论加速；这一点必须成为主指标。
 
-3. **完整攻击 oracle 的统一资源基准。** 将 A10/A11/A16 的 S-box/轮函数组件，放入同一可逆 AES/Ascon oracle，统一明密文对数、反计算、密钥扩展、门集、深度上限和成功率。产出可复现代码与 Pareto 曲线；进一步加入明确容错架构才可讨论物理运行时间。仅比较不同论文摘要中的最小量子位数，研究贡献不足。
+3. **完整攻击 oracle 的统一资源基准。** 将 A10/A11/A16/A17 的 S-box/轮函数组件，放入同一可逆 AES/Ascon oracle，统一明密文对数、反计算、密钥扩展、门集、深度上限和成功率。产出可复现代码与 Pareto 曲线；进一步加入明确容错架构才可讨论物理运行时间。仅比较不同论文摘要中的最小量子位数，研究贡献不足。
 
 4. **强 Q2 到受限接口的流密码安全分析。** 以 A06 为基线，逐项降低状态访问能力，判断加速剩余多少，是否可迁移至 Q1/受限 Q2。需要先精读该论文的 oracle 定义，不能预设其强模型攻击就是可迁移的。
 
 5. **把几何区分器框架连接到密钥恢复与自动优化。** 从 A14 的信号集中条件出发，结合 A08 的可标记子密钥和 A07 的嵌套搜索，在明确成本模型下找一个新的、非人为拼凑实例。应同时比较经典最佳攻击、量子 Grover 基线以及已有量子攻击；“相对某个经典算法加速”不足以表明有密码分析优势。
 
 ## 检索记录与局限
+
+2026-09-09 并行扩展检索新增 A17–A23：通过 DBLP 网页索引、arXiv、IEEE QCE 与作者机构/代码页发现和复核；MCP 的 IACR 查询提供碰撞与 AES 线索。新增条目均核精确标题、作者、版本/发表类型与来源；完整查询和字段核验见独立检索记录。
 
 IACR MCP 查询包括：`quantum symmetric`、`Grover AES`、`Simon quantum`、`quantum differential`、`quantum Ascon`、`offline Simon`、`quantum linear`。先用 2024–2026 显式区间，发现结果年份不一致后去掉 year_max 并逐篇核验页面 History。原始结果可在本地 `evidence/attacks-mcp-search.json` 回查；该辅助日志不纳入 Git。
 

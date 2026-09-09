@@ -1,6 +1,6 @@
 # 后量子对称密码：可证明安全、模式与量子 oracle 工具
 
-检索截点：2026-09-08（执行跨至 09-09）；本分册精选 17 篇，覆盖 qPRF/qPRP、Q1/Q2、EM/TEM/FX/Feistel、多钥、MAC/AEAD、sponge 与预计算。它是总调研的可复查材料，不声称穷尽每篇论文。
+检索截点：2026-09-08（执行跨至 09-09）；本分册精选 19 篇，覆盖 qPRF/qPRP、Q1/Q2、EM/TEM/FX/Feistel、多钥、MAC/AEAD、sponge 与预计算。它是总调研的可复查材料，不声称穷尽每篇论文。
 
 本轮以 apaper MCP 的 IACR 搜索发现论文，再开 ePrint 原始页面与 DBLP/出版社/作者机构库核元数据。MCP 的年份过滤存在漏查/越界，且其 DBLP 工具返回 JSON 错误、断连和 429；因此用标题与作者反查补漏。DBLP 的条目类型为 Informal 的 ePrint 记录**不构成录用证据**。正式记录、ePrint 状态冲突时优先报告正式记录，并标出差异。
 
@@ -10,11 +10,11 @@
 
 | 方向 | 2024–2026 的变化 | 阅读入口 |
 |---|---|---|
-| Q1 原语与工作模式证明 | EM→TEM→低熵钥 keyed sponge、Ascon/KMAC；Feistel 3/4 轮正向界 | P03、P04、P09、P12 |
+| Q1 原语与工作模式证明 | EM→TEM→低熵钥 keyed sponge、Ascon/KMAC；Feistel 3/4 轮正向界 | P03、P04、P09、P12、P18 |
 | 多用户/多钥 | 2026 已出现 TEM/FX 的 Q1MK 与 tweakable KAF 多钥证明 | P15、P16 |
 | 可逆随机置换证明工具 | 从单轮特设证明走向双向 oracle、lifting、compressed permutation | P05–P08、P13 |
 | 量子认证定义与组合 | plus-one 不足以保证某些组合；BU、SU、qPRF 之间需要更细区分 | P02、P11、P14 |
-| 预计算与资源约束 | 普通 indifferentiability 无法自动处理 advice；研究走向量子时间空间折中 | P17 |
+| 预计算与资源约束 | 普通 indifferentiability 无法自动处理 advice；研究走向量子时间空间折中 | P17、P19 |
 
 Q1 通常允许攻击者量子计算，但对部署中的秘密钥接口只作经典查询；公开算法作为理想原语时依然可以被量子访问。Q2 额外允许对秘密钥接口进行叠加查询。qPRF、strong qPRP 是安全概念，QROM/量子理想置换/理想密码则是模型，不应混用。哈希原像抗性、碰撞抗性、indifferentiability、AE 保密性、MAC 不可伪造性分别对应不同目标，不能用统一“安全减半”覆盖。
 
@@ -113,11 +113,11 @@ Q1 通常允许攻击者量子计算，但对部署中的秘密钥接口只作�
 ### P11 · Generic Composition: From Classical to Quantum Security
 
 - 作者：Nathalie Lang；Jannis Leuther；Stefan Lucks。
-- 年份与状态：保留近期预印本；ePrint 标 Preprint，2025-11-07 major revision；未核到正式录用。
-- 入口：[ePrint 2025/387](https://eprint.iacr.org/2025/387)；[DBLP](https://dblp.org/rec/journals/iacr/LangLL25)；BibTeX 键：`LangLL2025Composition`。
+- 年份与状态：正式发表；PQCrypto 2026, Part I, pp. 37–70，Springer 首次在线 2026-04-10。2026-09-09 补核 DBLP 正式记录；ePrint 的 2025 年是预印本年份。
+- 入口：[ePrint 2025/387](https://eprint.iacr.org/2025/387)；[DBLP](https://dblp.org/rec/conf/pqcrypto/LangLL26)；[Springer](https://link.springer.com/chapter/10.1007/978-3-032-22695-2_2)；BibTeX 键：`LangLL2025Composition`（为兼容保留原键名，year 已改为 2026）。
 - 主题与贡献：Q2 authenticated encryption 通用组合。给出反例：IND-qCPA 加密加 plus-one 不可伪造 MAC 的 Encrypt-then-MAC 组合不一定 IND-qCCA 安全；更强的 qPRF MAC 可支撑组合定理，并讨论 nonce 与关联数据版本。
 - 模型/局限：查询和回答可以叠加的强访问模型；不能将此结论机械解释为常规经典网络接口 Encrypt-then-MAC 已被实际攻破。
-- 核读深度：摘要级；须以 2025-11-07 后版本为准。
+- 核读深度：摘要级；本轮另核 PQCrypto 2026 正式版本摘要，后续定理引用应注明该版本。
 
 ### P12 · Post-quantum Security of Key-Alternating Feistel Ciphers
 
@@ -173,6 +173,24 @@ Q1 通常允许攻击者量子计算，但对部署中的秘密钥接口只作�
 - 模型/局限：单轮应用，需注意 rate≤capacity 等适用条件；从该结果推广多轮/变长 sponge、实际工作因子时要另证，不能直接移植 Grover 或随机预言机界。
 - 核读深度：摘要级；作者机构主页核发表声明；未复核全证。
 
+### P18 · Quantum Key-Length Extension
+
+- 作者：Joseph Jaeger；Fang Song；Stefano Tessaro。
+- 年份与状态：正式发表；TCC 2021, Part I, pp. 209–239；DBLP、Springer 与作者机构库交叉核验。
+- 入口：[ePrint 2021/579](https://eprint.iacr.org/2021/579)；[DBLP](https://dblp.org/rec/conf/tcc/JaegerST21)；[Springer](https://link.springer.com/chapter/10.1007/978-3-030-90459-3_8)；BibTeX 键：`JaegerST2021KeyLength`。
+- 主题与贡献：在理想模型中研究 FX 和双重加密的量子密钥长度扩展，给出具体安全界；补充 D4 的构造基础。
+- 模型/局限：FX 的秘密接口为经典，底层理想原语可量子查询；标准 FX 的非自适应结论与随机预言机变体的自适应结论分开。双重加密另在 fully-quantum 模型分析 strong PRP。不能将论文当年的开放问题直接写成 2026 年仍未解决。
+- 核读深度：摘要及出版社元数据；未审计完整证明。
+
+### P19 · Hybrid-Query Bounds with Partial Input Control Framework and Application to Tight M-eTCR
+
+- 作者：Andreas Hülsing；Mikhail Kudinov；Christian Majenz。DBLP 将第二位作者展开为 Mikhail A. Kudinov，书目沿用出版社与原稿署名。
+- 年份与状态：正式发表；ASIACRYPT 2025, Part VIII, pp. 256–286；DBLP、Springer 与 ePrint 交叉核验。会议年 2025 与 Springer 版权年 2026 分别记录。
+- 入口：[ePrint 2025/633](https://eprint.iacr.org/2025/633)；[DBLP](https://dblp.org/rec/conf/asiacrypt/HulsingKM25)；[Springer](https://link.springer.com/chapter/10.1007/978-981-95-5125-5_9)；BibTeX 键：`HulsingKM2025HybridQuery`。
+- 主题与贡献：扩展 hybrid compressed oracle 以处理输入仅部分由攻击者控制的经典查询，分析多目标 extended target collision resistance，并以匹配攻击说明查询界的紧性。
+- 模型/局限：QROM 中混合经典/量子查询；hash-and-sign 的盐长与哈希性质分析不等同于某个实际哈希函数的无条件安全，也不是允许量子签名查询的普遍定理。
+- 核读深度：摘要及正式出版元数据；适合与 P17 和 A20/A21 合读。
+
 ## 有依据的选题建议
 
 以下是从已检索文献推导的候选问题，不是“已验证无人做过”的新颖性声明。正式立项还需读相邻论文全文、最近版本与引用链。
@@ -186,6 +204,8 @@ Q1 通常允许攻击者量子计算，但对部署中的秘密钥接口只作�
 优先阅读顺序：应用/模式方向 P03→P04→P09→P15→P16；证明工具方向 P05→P06/P07→P08→P13→P17；认证定义方向 P01→P02→P11→P14。
 
 ## 核验风险与未纳入项
+
+2026-09-09 以 MCP 的 IACR 查询并行于 DBLP/出版社网页检索，新增 P18/P19，并将 P11 更新为 PQCrypto 2026 正式记录。P19 的机构库导出曾把一位作者放入 editor 字段，本报告用 Springer 与原始稿件校对全部作者；不自动导入该导出。
 
 - ePrint 2021/192《Quantum Indifferentiability of SHA-3》在检索中出现，但本轮不纳入可靠结论链。2025 论文明确把相关证明障碍作为新突破；应先核旧稿更正、撤回/缺陷记录，不可将两个“首次”简单并列。
 - “A Note on Quantum-Secure PRPs” 检索显示已有 Quantum 2025 正式版本（DOI 10.22331/q-2025-04-08-1696），是 P01 与 P13 间值得补读的计算假设构造背景。本轮没有完整核作者/正文，因此不列为已完成卡片。

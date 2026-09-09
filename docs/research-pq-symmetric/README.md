@@ -2,9 +2,10 @@
 
 文献截点：2026-09-08；整理完成：2026-09-09。
 
-- **[完整调研报告](survey.md)**：14 类研究方向、54 篇编号研究论文、近期观察与选题建议，所有逐篇记录已汇总到一个文档。
-- **[学术汇报与审阅版 Typst](report.typ)**：编译后在同目录生成 `report.pdf`。现版为 29 页 A4，保留完整调研内容，含可点击目录、54 篇论文书签、10 张表格与 58 条参考文献；文献截点仍为 2026-09-08。
-- **[统一 BibTeX](references.bib)**：54 篇论文及 4 条官方背景资料。根据核验的官方元数据转录；DBLP 原始导出失败处已明确说明。
+- **[完整调研报告](survey.md)**：14 类研究方向、64 篇编号研究论文、近期观察与选题建议，所有逐篇记录已汇总到一个文档。
+- **[学术汇报与审阅版 Typst](report.typ)**：编译后在同目录生成 `report.pdf`。版式为 A4，保留完整调研内容，含可点击目录、64 篇论文书签、11 张表格与 68 条参考文献；文献截点仍为 2026-09-08。
+- **[统一 BibTeX](references.bib)**：64 篇论文及 4 条官方背景资料。根据核验的官方元数据转录；DBLP 原始导出失败处已明确说明。
+- **[并行扩展检索与核验记录](search-expansion-2026-09-09.md)**：MCP/在线搜索的实际结果、新增 10 篇逐条证据与 2 条原有引用修订；也已收入总报告第 13 节。
 - 专题源文件：[量子攻击与资源估计](attacks-notes.md)、[安全证明与构造](proofs-notes.md)、[应用扩展](applications-notes.md)。
 - 分组书目：[attacks.bib](attacks.bib)、[proofs.bib](proofs.bib)、[applications.bib](applications.bib)、[supplement.bib](supplement.bib)。
 - 原始检索日志可在本地 `evidence/` 目录留存，已由 Git 忽略；正式报告与 BibTeX 保留引用来源和核验结论。

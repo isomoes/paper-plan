@@ -1,6 +1,6 @@
 # 后量子语境下的对称密码：研究方向、热点与论文线索
 
-文献时间范围截止：**2026-09-08**；检索与整理于 **2026-09-08 至 09**（台北时区跨日）完成。主要入口：本仓库的 **apaper MCP / IACR ePrint**；发表核验：**DBLP、IACR 期刊页、出版社及会议页面**。本文是面向选题的文献地图，覆盖检索到的主要公开研究路线，不声称穷尽所有论文，也不构成对论文证明或代码的独立复现。
+文献时间范围截止：**2026-09-08**；检索与整理于 **2026-09-08 至 09**（台北时区跨日）完成。发现入口：**apaper MCP（IACR、DBLP、arXiv、Google Scholar）与并行在线检索**；发表核验：**DBLP、IACR、Springer、IEEE 会议及作者机构页面**。各渠道是否实际返回结果与字段核验范围见第 2.4 节。本文是面向选题的文献地图，覆盖检索到的主要公开研究路线，不声称穷尽所有论文，也不构成对论文证明或代码的独立复现。
 
 阅读导航：[方向地图](#research-map) · [选题建议](#research-questions) · [近期观察](#recent-papers) · [补充论文](#supplemental-papers) · [攻击与资源估计](#attack-catalog) · [安全证明](#proof-catalog) · [应用扩展](#application-catalog) · [统一 BibTeX](references.bib)
 
@@ -44,7 +44,15 @@ IACR 查询按主题展开：`quantum symmetric`、`Grover AES`、`Simon quantum
 1. MCP 年份筛选不完全可靠：`quantum` 且起止年均为 2026 返回空结果，而较宽查询存在 2026 论文；另一查询标 2024–2025 却返回更早 ePrint 编号。可能混合了更新年份或搜索解析，**不据此推断某年没有研究**，最终日期以原始页面为准。
 2. DBLP MCP 部分请求断连或 JSON 解析失败；DBLP BibTeX 导出也有访问失败。因此用 DBLP 官方记录/作者列表、期刊或出版社页交叉核验；书目文件明确区分原始获取与根据已核元数据转录的 BibTeX，不能统称“全部原样导出”。
 
-覆盖边界：本轮没有系统穷举 CNKI/Google Scholar；对于可更新加密与对称属性/功能加密，补充了代表性正式工作和最新线索，未穷举所有构造与底层假设。这里的“主要方向地图”不应转述为形式化系统综述或全领域无遗漏清单。
+覆盖边界：本轮尝试了 Google Scholar MCP，但没有取得可用结果；没有系统穷举 CNKI/Google Scholar；对于可更新加密与对称属性/功能加密，补充了代表性正式工作和最新线索，未穷举所有构造与底层假设。这里的“主要方向地图”不应转述为形式化系统综述或全领域无遗漏清单。
+
+### 2.4 2026-09-09 并行扩展与引用核验
+
+本轮以 `Promise.allSettled` 并发调用 MCP 和在线检索：DBLP 两组 MCP 查询均 JSON 解析失败；Google Scholar MCP 返回空；arXiv 的窄查询为空，宽查询返回夹杂无关主题的结果；IACR MCP 返回可用碰撞、FX 和 AES 电路线索。随后并行搜索 DBLP 正式记录、Springer、IEEE QCE、arXiv 与作者机构页面，以精确标题回查。工具错误与空结果不用于推断论文不存在。
+
+新增 **10 篇**：A17–A23、P18–P19、E15；其中 9 篇有正式会议/期刊记录，A20 保留为已核实存在的预印本。A09 补全 ASIACRYPT 正式页码与 DOI；P11 更新为 PQCrypto 2026。所有新增引用逐项检查标题、全体作者、版本对应、年份/发表类型及来源；填写的 DOI 有记录支持，A19 暂缺官方 DOI 字段并明确省略。书目核验不等同于证明复现。
+
+跨源复核发现：A18 的 ePrint 发表标签滞后；A17/A18/P19 的会议年与出版社版权/上线年不同；E15 的 DBLP key 尾部 `22` 不代表年份；A23 的预印本 PDF 存在占位 DOI。正文逐项记录差异，保留正式记录链接。可复查的渠道查询、采用/排除理由和逐条字段证据见 [扩展检索记录](search-expansion-2026-09-09.md)。原有其余引用沿用前轮核验；本轮没有重新逐一审计全部旧文献。
 
 ## 3. 阅读前必须统一的模型
 
@@ -65,16 +73,16 @@ IACR 查询按主题展开：`quantum symmetric`、`Grover AES`、`Simon quantum
 
 | 编号 | 方向与近年问题 | 代表线索 | 选题观察 |
 |---|---|---|---|
-| D1 | Grover / AES / 轻量级原语的具体资源估计，深度—宽度权衡 | Minimal T-depth / Minimal Width；AES Low DW-cost | 活跃且易做实验，但只替换一个密码通常不足以形成强贡献 |
-| D2 | Simon、hidden shift、offline Simon 与周期结构自动搜索 | Quantum Periodic Distinguisher；Geometric Approach；2026/1528 | 自动化、可实现性约束和反例检查形成连贯研究线 |
+| D1 | Grover / AES / 轻量级原语的具体资源估计，深度—宽度权衡 | Minimal T-depth / Minimal Width；AES Low DW-cost；AES 线性层与 IEEE QCE 电路（A17/A22） | 活跃且易做实验，但只替换一个密码通常不足以形成强贡献 |
+| D2 | Simon、hidden shift、offline Simon 与周期结构自动搜索 | Quantum Periodic Distinguisher；Geometric Approach；2026/1528；单查询 hidden shift（A19） | 自动化、可实现性约束和反例检查形成连贯研究线 |
 | D3 | 差分、线性、快速相关、MITM、rebound 等经典攻击的量子化 | Improved Quantum Linear Attacks and Application to CAST；LFSR 快速相关；量子 MITM | 应比较相同数据/内存约束下最好的经典与量子基线 |
 | D4 | EM/FX/Feistel 等分组密码构造的量子安全 | Key-Alternating Feistel；Compressed Permutation Oracles | 证明工具与最小轮数/紧界是理论重点 |
 | D5 | PRF/MAC/AEAD 的量子安全定义、组合与证明 | Generic Composition Q2 AE；Keyed Sponge modular proof | 加密安全与认证安全需分别处理，特别是 Q2 伪造定义 |
-| D6 | Sponge、哈希与置换模型中的不可区分性、indifferentiability 及预计算 | The Sponge is Quantum Indifferentiable；Quantum Lifting | 2024–2025 有多篇关联工作，是本次样本中最清晰的理论热点之一 |
+| D6 | Sponge、哈希与置换模型中的不可区分性、indifferentiability 及预计算 | The Sponge is Quantum Indifferentiable；Quantum Lifting；碰撞搜索与 hybrid-query（A20/A21/P19） | 2024–2025 有多篇关联工作，是本次样本中最清晰的理论热点之一 |
 | D7 | 多用户、多密钥、预计算与具体安全界 | Multi-Key Security in the Quantum World（2026/382）；多密钥 Tweakable Key-Alternating Feistel（2026/1312） | 已有多用户 Feistel 工作，选题必须进一步限定构造或安全性质 |
 | D8 | 宽分组、高安全余量与轻量级原语/模式设计 | Saturnin；Ascon 标准；Rijndael-256/Accordion 动向 | 分组长度、密钥长度、标签与容量分别约束不同风险 |
 | D9 | 对称原语在后量子签名中的设计和密码分析 | FAEST v2；Lynx；Magic Pot / AIM2 | 共设计与代数攻击相互推动；属于相邻应用 |
-| D10 | 哈希签名与多目标哈希安全、实现可靠性 | SPHINCS+ / SLH-DSA | 应围绕具体哈希性质、状态/故障或资源问题，而非泛泛更换哈希 |
+| D10 | 哈希签名与多目标哈希安全、实现可靠性 | SPHINCS+ / SLH-DSA；机器检查 XMSS（E15） | 应围绕具体哈希性质、状态/故障或资源问题，而非泛泛更换哈希 |
 | D11 | 门限/分布式加密、可搜索对称加密的后量子化 | EQuADiSE；PQC conjunctive dynamic SSE | 必须同时看自适应腐化、泄漏、假设和真正 PQC 实例的效率 |
 | D12 | HHE / transciphering、ARX/算术友好原语与实现保护 | PASTA；PETCHA；2026/1485 | 客户端带宽、服务端同态成本与侧信道防护构成可测量权衡 |
 | D13 | 可更新对称加密、轮换密钥与密钥泄漏后的保护 | CCA Secure Updatable Encryption from Non-Mappable Group Actions（PQCrypto 2024） | 接口虽是对称原语，强功能可能需要公钥级假设；需核 ROM/QROM 差别 |
@@ -121,7 +129,7 @@ IACR 查询按主题展开：`quantum symmetric`、`Grover AES`、`Simon quantum
 
 ## 7. 逐篇论文记录
 
-本报告共含 **54 篇编号研究论文**：攻击 A01–A16（16 篇）、证明 P01–P17（17 篇）、应用 E01–E14（14 篇），以及补充 S1–S4、S6–S8（7 篇）；S5 为标准背景，不计入研究论文数。下方保留专题文件入口，**全部逐篇记录也直接汇总在本文第 10–12 节**，无需跳转即可阅读全文。未展开的额外追踪线索不计入 54 篇。
+本报告共含 **64 篇编号研究论文**：攻击 A01–A23（23 篇）、证明 P01–P19（19 篇）、应用 E01–E15（15 篇），以及补充 S1–S4、S6–S8（7 篇）；S5 为标准背景，不计入研究论文数。下方保留专题文件入口，**全部逐篇记录也直接汇总在本文第 10–12 节**，无需跳转即可阅读全文。未展开的额外追踪线索不计入 64 篇。
 
 - [量子攻击与资源估计](attacks-notes.md)
 - [安全模型、证明与对称构造](proofs-notes.md)
@@ -233,7 +241,7 @@ IACR 查询按主题展开：`quantum symmetric`、`Grover AES`、`Simon quantum
 
 查询复杂度、经典数据量、逻辑门数、T-count、T-depth、总深度、逻辑量子位、DW-cost、物理量子位及容错运行时间是不同指标。低成本量子 AES 实现意味着更便宜的攻击 oracle；它不会让 AES 本身变得更安全。也不能单凭 Grover 的平方根加速就把所有具体算法的安全强度机械减半。A02、A04、A08 提供了这些区分的直接研究依据。
 
-### 精选论文（16 篇）
+### 精选论文（23 篇）
 
 #### A01. Q2 结构攻击的基础文献
 
@@ -327,10 +335,10 @@ Kaveh Bashiri; Xavier Bonnetain; Akinori Hosoyamada; Nathalie Lang; André Schro
 #### A09. SMT 自动搜索量子周期区分器
 
 **Quantum Periodic Distinguisher Construction: Symbolization Method and Automated Tool**\
-Qun Liu; Haoyang Wang; Jinliang Wang; Boyun Li; Meiqin Wang. **ASIACRYPT 2025**。
+Qun Liu; Haoyang Wang; Jinliang Wang; Boyun Li; Meiqin Wang. **ASIACRYPT 2025, Part VIII, pp. 224–255**。
 
-- 状态：IACR 元数据注明该会议论文的 major revision；2025-04-15 首发，2025-12-20 最新修订。
-- 来源：[ePrint 2025/681](https://eprint.iacr.org/2025/681)。
+- 状态：正式发表；2026-09-09 补核 DBLP 与 Springer 正式记录。ePrint 2025-04-15 首发，2025-12-20 修订。
+- 来源：[ePrint 2025/681](https://eprint.iacr.org/2025/681)；[DBLP](https://dblp.org/rec/conf/asiacrypt/LiuWWLW25)；[Springer](https://link.springer.com/chapter/10.1007/978-981-95-5125-5_8)。
 - 贡献：符号化表示与 SMT 搜索扩展到未知差分及概率周期，对 GFS、LBlock、TWINE、Skipjack-B、SKINNY 等报告新减轮区分器。
 - 模型/局限：核心 **Q2**；“找到区分器”不自动得到低成本密钥恢复，仍需证明 oracle 可构造、满足周期条件并计算完整成本。
 - 阅读：A；后续：必须与 A15 的前缀实现性/密钥依赖条件并读。
@@ -412,19 +420,98 @@ Youbo Guo; Fengrong Zhang; Lei Liao; Yongzhuang Wei; Baocang Wang; Xiaogang Zhou
 - 模型/局限：属于 **Q1 攻击 oracle 的可用本地组件**；最优性限定门集、无辅助位及目标函数。NCT 门数、Clifford+T 总深度与物理成本不能直接互换。
 - 阅读：A；价值：很新，适合监控和复现，当前不把其摘要最优性宣称当作本次已证明事实。
 
+#### A17. AES 线性层与完整 oracle 的深度优化
+
+**Quantum Circuits of AES with a Low-Depth Linear Layer and a New Structure**\
+Haotian Shi; Xiutao Feng. **ASIACRYPT 2024, Part VIII, pp. 358–395**。
+
+- 状态：正式发表；DBLP 会议年为 2024，Springer 首次在线为 2024-12-12，但推荐引文版权年为 2025；这是同一工作。
+- 来源：[DBLP](https://dblp.org/rec/conf/asiacrypt/ShiF24)；[Springer](https://link.springer.com/chapter/10.1007/978-981-96-0944-4_12)；[ePrint 2024/381](https://eprint.iacr.org/2024/381)。
+- 贡献：优化无辅助位的 CNOT 线性层，结合 compressed pipeline 构造 AES 量子电路，补足 A10/A11 之前的完整 oracle 基线。
+- 模型/局限：讨论攻击者本地可逆电路与深度/宽度折衷；逻辑电路优化不能直接换算成容错设备上的运行时间，也不是 AES 加密方案的新安全证明。
+- 阅读：A；2026-09-09 从 DBLP 网页索引发现，再核出版社及原始摘要。
+
+#### A18. 六轮 Feistel 的通用量子攻击
+
+**Classical and Quantum Generic Attacks on 6-Round Feistel Schemes**\
+Maya Chartouny; Benoît Cogliati; Jacques Patarin. **SAC 2024, Part II, pp. 85–111**。
+
+- 状态：正式发表；DBLP 按 SAC 2024 编目，Springer 首次在线为 2025-03-13。ePrint 仍写 Preprint，以正式会议记录纠正该滞后状态。
+- 来源：[DBLP](https://dblp.org/rec/conf/sacrypt/ChartounyCP24)；[Springer](https://link.springer.com/chapter/10.1007/978-3-031-82841-6_4)；[ePrint 2024/458](https://eprint.iacr.org/2024/458)。
+- 贡献：将 subset-finding 量子算法与四点结构结合，分析内部为随机函数或随机置换的六轮平衡 Feistel；另改进内部置换场景的经典分析。
+- 模型/局限：理想化 Feistel 的量子区分问题；轮函数类型、半分组长度与 oracle 访问条件必须沿用正文。不能将该结论转述为完整 DES 的密钥恢复。
+- 阅读：A；未重新推导复杂度或复现论文模拟。
+
+#### A19. nonce 变化下的单查询 hidden shift
+
+**Single-Query Quantum Hidden Shift Attacks**\
+Xavier Bonnetain; André Schrottenloher. **IACR ToSC 2024(3), pp. 266–297**；ePrint 首发 2023-09-01。
+
+- 状态：正式发表；DBLP 期刊记录、ePrint 与 Inria 作者报告一致。尚未取得可核对的官方 DOI 字段，书目不猜填。
+- 来源：[DBLP](https://dblp.org/rec/journals/tosc/BonnetainS24)；[ePrint 2023/1306](https://eprint.iacr.org/2023/1306)；[Inria 作者报告](https://rex-radar.inria.fr/report/2024/caramba/index.html)。
+- 贡献：针对每次查询都改变隐藏位移的情况，构造单次叠加查询的 Boolean hidden-shift 子程序，并分析 Rocca、Rocca-S、Tiaoxin-346 与 AEGIS-128L 的状态恢复。
+- 模型/局限：**Q2**；“单查询”描述子程序，每次成功概率可能很小，完整攻击仍需独立重复。作者明确不声称破坏这些方案的经典查询安全目标。
+- 阅读：A；适合与 A01/A03 对照 oracle、nonce 与重复成本。
+
+#### A20. 多个碰撞对的紧量子搜索
+
+**A Tight Quantum Algorithm for Multiple Collision Search**\
+Xavier Bonnetain; Johanna Loyer; André Schrottenloher; Yixin Shen. **arXiv:2509.13909 / ePrint 2025/1690**。
+
+- 状态：预印本；arXiv v1 为 2025-09-17，DBLP 为 informal 记录；作者公开列表仍列入 Preprints，本轮未确认正式 venue。arXiv DOI 不是录用证据。
+- 来源：[arXiv 原始摘要及版本](https://arxiv.org/abs/2509.13909)；[DBLP](https://dblp.org/rec/journals/iacr/BonnetainLSS25)；[作者发表列表](https://johanna-loyer.github.io/page-personnelle/)。
+- 贡献：扩展 chained quantum walks，以覆盖此前多个碰撞对搜索算法未达到查询下界的参数区间。
+- 模型/局限：随机函数的量子查询模型；查询界的紧性与时间界分开，时间结论依赖 **QRAM**。找多个碰撞对不等于找多个输入共享同一输出的多重碰撞。
+- 阅读：A；可以补足 D3/D6/D7 对批量碰撞与内存假设的比较。
+
+#### A21. 有限量子内存下的碰撞搜索基础
+
+**An Efficient Quantum Collision Search Algorithm and Implications on Symmetric Cryptography**\
+André Chailloux; María Naya-Plasencia; André Schrottenloher. **ASIACRYPT 2017, Part II, pp. 211–240**。
+
+- 状态：正式发表；DBLP 会议记录核验作者、页码与 DOI，原始 IACR 摘要核验研究对象。
+- 来源：[DBLP](https://dblp.org/rec/conf/asiacrypt/ChaillouxNS17)；[DOI](https://doi.org/10.1007/978-3-319-70697-9_8)；[ePrint 2017/847](https://eprint.iacr.org/2017/847)。
+- 贡献：以幅度放大研究碰撞、多目标原像及多用户密钥恢复，明确区分 oracle 查询数量、实际时间和经典/量子存储。
+- 模型/局限：不同任务及并行化方案有各自成本；多项式量子内存不代表经典内存也为多项式。不能把抽象碰撞搜索直接称作标准 SHA-2 的结构性破解。
+- 阅读：A；作为 A20 与资源受限哈希安全的较早基线。
+
+#### A22. IEEE QCE 的 DES/3DES 可逆攻击电路
+
+**A Quantum Circuit to Execute a Key-Recovery Attack Against the DES and 3DES Block Ciphers**\
+Simone Perriello; Alessandro Barenghi; Gerardo Pelosi. **IEEE QCE 2024, pp. 1–12**。
+
+- 状态：正式发表；DBLP、IEEE 会议录用名单与作者 artifact 共同核验。IEEE DOI 落地页本次访问失败，DOI 来自作者 artifact 的书目字段。
+- 来源：[DBLP](https://dblp.org/rec/conf/qce/PerrielloBP24)；[IEEE 正式名单](https://qce.quantum.ieee.org/2024/wp-content/uploads/sites/8/2024/08/QCE24-Accepted-Technical-Papers-by-Track-QALG-QSYS-QAPP-QPHO-QNET-QTEM-QML.pdf)；[作者代码与书目](https://github.com/paper-codes/2024-QCE)；[DOI](https://doi.org/10.1109/QCE60285.2024.00011)。
+- 贡献：实现用于 DES/3DES 密钥搜索的可逆电路，并公开生成资源指标的代码；提供 IACR 之外的量子工程会议基线。
+- 模型/局限：Grover 电路不依赖 QRAM，而另给的 3DES variant 2 MITM 指标依赖 QRAM；两者应分开比较。旧密码只作成本研究对象，不作为部署推荐。
+- 阅读：A；核读 artifact 说明与书目，未运行代码或复现表格。
+
+#### A23. AES-like 哈希的量子 Nostradamus/MITM
+
+**Improved Meet-in-the-Middle Nostradamus Attacks on AES-like Hashing**\
+Xiaoyang Dong; Jian Guo; Shun Li; Phuong Pham; Tianyu Zhang. **IACR ToSC 2024(1), pp. 158–187**。
+
+- 状态：正式发表；DBLP 正式期刊记录、作者研究组列表与 ePrint 摘要核验。ePrint PDF 首页出现占位 DOI，书目采用 DBLP 核实的正式 DOI。
+- 来源：[DBLP](https://dblp.org/rec/journals/tosc/DongGLPZ24)；[正式 DOI](https://doi.org/10.46586/tosc.v2024.i1.158-187)；[ePrint 2024/352](https://eprint.iacr.org/2024/352)；[作者研究组](https://catf.crypto.sg/mitm)。
+- 贡献：改进自动 MITM 搜索中的多目标连接步骤，同时分析经典和量子情形；补充普通原像/碰撞之外的 chosen-target forced-prefix 问题。
+- 模型/局限：结论针对相应 AES-like 哈希实例及轮数；提交目标摘要后连接消息前缀的任务，与标准分组密码密钥恢复不同。
+- 阅读：A；复杂度优势和轮数需按正文实例分别比较。
+
 ### 值得展开的研究题目（本调研提出的建议）
 
 1. **带可验证证书的周期区分器自动搜索。** 以 A05 → A09 → A15 为线索，将符号解转为具体输入族/密钥条件、给出前缀构造证书与小参数穷举验证；再计算完整密钥恢复成本。清晰的研究问题是“工具发现的优势在多大比例密钥与什么查询接口下成立”，而不仅是多增加一轮。发表潜力依赖新理论、系统性缺陷修正或跨多种结构的改进，单次换密码实例较弱。
 
 2. **减少相关态攻击中的 QRACM 假设。** A08 正文直接指出该问题仍开放。可研究受限/分层/流式量子数据访问、预计算折中或电路重算，并比较其相对 Grover 的净优势。挑战是数据制备可能消耗掉 Fourier 型理论加速；这一点必须成为主指标。
 
-3. **完整攻击 oracle 的统一资源基准。** 将 A10/A11/A16 的 S-box/轮函数组件，放入同一可逆 AES/Ascon oracle，统一明密文对数、反计算、密钥扩展、门集、深度上限和成功率。产出可复现代码与 Pareto 曲线；进一步加入明确容错架构才可讨论物理运行时间。仅比较不同论文摘要中的最小量子位数，研究贡献不足。
+3. **完整攻击 oracle 的统一资源基准。** 将 A10/A11/A16/A17 的 S-box/轮函数组件，放入同一可逆 AES/Ascon oracle，统一明密文对数、反计算、密钥扩展、门集、深度上限和成功率。产出可复现代码与 Pareto 曲线；进一步加入明确容错架构才可讨论物理运行时间。仅比较不同论文摘要中的最小量子位数，研究贡献不足。
 
 4. **强 Q2 到受限接口的流密码安全分析。** 以 A06 为基线，逐项降低状态访问能力，判断加速剩余多少，是否可迁移至 Q1/受限 Q2。需要先精读该论文的 oracle 定义，不能预设其强模型攻击就是可迁移的。
 
 5. **把几何区分器框架连接到密钥恢复与自动优化。** 从 A14 的信号集中条件出发，结合 A08 的可标记子密钥和 A07 的嵌套搜索，在明确成本模型下找一个新的、非人为拼凑实例。应同时比较经典最佳攻击、量子 Grover 基线以及已有量子攻击；“相对某个经典算法加速”不足以表明有密码分析优势。
 
 ### 检索记录与局限
+
+2026-09-09 并行扩展检索新增 A17–A23：通过 DBLP 网页索引、arXiv、IEEE QCE 与作者机构/代码页发现和复核；MCP 的 IACR 查询提供碰撞与 AES 线索。新增条目均核精确标题、作者、版本/发表类型与来源；完整查询和字段核验见独立检索记录。
 
 IACR MCP 查询包括：`quantum symmetric`、`Grover AES`、`Simon quantum`、`quantum differential`、`quantum Ascon`、`offline Simon`、`quantum linear`。先用 2024–2026 显式区间，发现结果年份不一致后去掉 year_max 并逐篇核验页面 History。原始结果可在本地 `evidence/attacks-mcp-search.json` 回查；该辅助日志不纳入 Git。
 
@@ -434,13 +521,11 @@ IACR MCP 查询包括：`quantum symmetric`、`Grover AES`、`Simon quantum`、`
 
 本专题是精选证据地图，不声称列全所有论文、所有密码实例或已完成系统综述。通用哈希碰撞、多碰撞/反弹、AEAD 安全证明等与其他专题交叉的方向应在总报告中合并，避免把同一论文的预印本和正式版本重复计数。
 
-
-
 <a id="proof-catalog"></a>
 
 ## 11. 安全证明与对称构造：完整记录
 
-检索截点：2026-09-08（执行跨至 09-09）；本分册精选 17 篇，覆盖 qPRF/qPRP、Q1/Q2、EM/TEM/FX/Feistel、多钥、MAC/AEAD、sponge 与预计算。它是总调研的可复查材料，不声称穷尽每篇论文。
+检索截点：2026-09-08（执行跨至 09-09）；本分册精选 19 篇，覆盖 qPRF/qPRP、Q1/Q2、EM/TEM/FX/Feistel、多钥、MAC/AEAD、sponge 与预计算。它是总调研的可复查材料，不声称穷尽每篇论文。
 
 本轮以 apaper MCP 的 IACR 搜索发现论文，再开 ePrint 原始页面与 DBLP/出版社/作者机构库核元数据。MCP 的年份过滤存在漏查/越界，且其 DBLP 工具返回 JSON 错误、断连和 429；因此用标题与作者反查补漏。DBLP 的条目类型为 Informal 的 ePrint 记录**不构成录用证据**。正式记录、ePrint 状态冲突时优先报告正式记录，并标出差异。
 
@@ -450,11 +535,11 @@ IACR MCP 查询包括：`quantum symmetric`、`Grover AES`、`Simon quantum`、`
 
 | 方向 | 2024–2026 的变化 | 阅读入口 |
 |---|---|---|
-| Q1 原语与工作模式证明 | EM→TEM→低熵钥 keyed sponge、Ascon/KMAC；Feistel 3/4 轮正向界 | P03、P04、P09、P12 |
+| Q1 原语与工作模式证明 | EM→TEM→低熵钥 keyed sponge、Ascon/KMAC；Feistel 3/4 轮正向界 | P03、P04、P09、P12、P18 |
 | 多用户/多钥 | 2026 已出现 TEM/FX 的 Q1MK 与 tweakable KAF 多钥证明 | P15、P16 |
 | 可逆随机置换证明工具 | 从单轮特设证明走向双向 oracle、lifting、compressed permutation | P05–P08、P13 |
 | 量子认证定义与组合 | plus-one 不足以保证某些组合；BU、SU、qPRF 之间需要更细区分 | P02、P11、P14 |
-| 预计算与资源约束 | 普通 indifferentiability 无法自动处理 advice；研究走向量子时间空间折中 | P17 |
+| 预计算与资源约束 | 普通 indifferentiability 无法自动处理 advice；研究走向量子时间空间折中 | P17、P19 |
 
 Q1 通常允许攻击者量子计算，但对部署中的秘密钥接口只作经典查询；公开算法作为理想原语时依然可以被量子访问。Q2 额外允许对秘密钥接口进行叠加查询。qPRF、strong qPRP 是安全概念，QROM/量子理想置换/理想密码则是模型，不应混用。哈希原像抗性、碰撞抗性、indifferentiability、AE 保密性、MAC 不可伪造性分别对应不同目标，不能用统一“安全减半”覆盖。
 
@@ -553,11 +638,11 @@ Q1 通常允许攻击者量子计算，但对部署中的秘密钥接口只作�
 #### P11 · Generic Composition: From Classical to Quantum Security
 
 - 作者：Nathalie Lang；Jannis Leuther；Stefan Lucks。
-- 年份与状态：保留近期预印本；ePrint 标 Preprint，2025-11-07 major revision；未核到正式录用。
-- 入口：[ePrint 2025/387](https://eprint.iacr.org/2025/387)；[DBLP](https://dblp.org/rec/journals/iacr/LangLL25)；BibTeX 键：`LangLL2025Composition`。
+- 年份与状态：正式发表；PQCrypto 2026, Part I, pp. 37–70，Springer 首次在线 2026-04-10。2026-09-09 补核 DBLP 正式记录；ePrint 的 2025 年是预印本年份。
+- 入口：[ePrint 2025/387](https://eprint.iacr.org/2025/387)；[DBLP](https://dblp.org/rec/conf/pqcrypto/LangLL26)；[Springer](https://link.springer.com/chapter/10.1007/978-3-032-22695-2_2)；BibTeX 键：`LangLL2025Composition`（为兼容保留原键名，year 已改为 2026）。
 - 主题与贡献：Q2 authenticated encryption 通用组合。给出反例：IND-qCPA 加密加 plus-one 不可伪造 MAC 的 Encrypt-then-MAC 组合不一定 IND-qCCA 安全；更强的 qPRF MAC 可支撑组合定理，并讨论 nonce 与关联数据版本。
 - 模型/局限：查询和回答可以叠加的强访问模型；不能将此结论机械解释为常规经典网络接口 Encrypt-then-MAC 已被实际攻破。
-- 核读深度：摘要级；须以 2025-11-07 后版本为准。
+- 核读深度：摘要级；本轮另核 PQCrypto 2026 正式版本摘要，后续定理引用应注明该版本。
 
 #### P12 · Post-quantum Security of Key-Alternating Feistel Ciphers
 
@@ -613,6 +698,24 @@ Q1 通常允许攻击者量子计算，但对部署中的秘密钥接口只作�
 - 模型/局限：单轮应用，需注意 rate≤capacity 等适用条件；从该结果推广多轮/变长 sponge、实际工作因子时要另证，不能直接移植 Grover 或随机预言机界。
 - 核读深度：摘要级；作者机构主页核发表声明；未复核全证。
 
+#### P18 · Quantum Key-Length Extension
+
+- 作者：Joseph Jaeger；Fang Song；Stefano Tessaro。
+- 年份与状态：正式发表；TCC 2021, Part I, pp. 209–239；DBLP、Springer 与作者机构库交叉核验。
+- 入口：[ePrint 2021/579](https://eprint.iacr.org/2021/579)；[DBLP](https://dblp.org/rec/conf/tcc/JaegerST21)；[Springer](https://link.springer.com/chapter/10.1007/978-3-030-90459-3_8)；BibTeX 键：`JaegerST2021KeyLength`。
+- 主题与贡献：在理想模型中研究 FX 和双重加密的量子密钥长度扩展，给出具体安全界；补充 D4 的构造基础。
+- 模型/局限：FX 的秘密接口为经典，底层理想原语可量子查询；标准 FX 的非自适应结论与随机预言机变体的自适应结论分开。双重加密另在 fully-quantum 模型分析 strong PRP。不能将论文当年的开放问题直接写成 2026 年仍未解决。
+- 核读深度：摘要及出版社元数据；未审计完整证明。
+
+#### P19 · Hybrid-Query Bounds with Partial Input Control Framework and Application to Tight M-eTCR
+
+- 作者：Andreas Hülsing；Mikhail Kudinov；Christian Majenz。DBLP 将第二位作者展开为 Mikhail A. Kudinov，书目沿用出版社与原稿署名。
+- 年份与状态：正式发表；ASIACRYPT 2025, Part VIII, pp. 256–286；DBLP、Springer 与 ePrint 交叉核验。会议年 2025 与 Springer 版权年 2026 分别记录。
+- 入口：[ePrint 2025/633](https://eprint.iacr.org/2025/633)；[DBLP](https://dblp.org/rec/conf/asiacrypt/HulsingKM25)；[Springer](https://link.springer.com/chapter/10.1007/978-981-95-5125-5_9)；BibTeX 键：`HulsingKM2025HybridQuery`。
+- 主题与贡献：扩展 hybrid compressed oracle 以处理输入仅部分由攻击者控制的经典查询，分析多目标 extended target collision resistance，并以匹配攻击说明查询界的紧性。
+- 模型/局限：QROM 中混合经典/量子查询；hash-and-sign 的盐长与哈希性质分析不等同于某个实际哈希函数的无条件安全，也不是允许量子签名查询的普遍定理。
+- 核读深度：摘要及正式出版元数据；适合与 P17 和 A20/A21 合读。
+
 ### 有依据的选题建议
 
 以下是从已检索文献推导的候选问题，不是“已验证无人做过”的新颖性声明。正式立项还需读相邻论文全文、最近版本与引用链。
@@ -627,18 +730,18 @@ Q1 通常允许攻击者量子计算，但对部署中的秘密钥接口只作�
 
 ### 核验风险与未纳入项
 
+2026-09-09 以 MCP 的 IACR 查询并行于 DBLP/出版社网页检索，新增 P18/P19，并将 P11 更新为 PQCrypto 2026 正式记录。P19 的机构库导出曾把一位作者放入 editor 字段，本报告用 Springer 与原始稿件校对全部作者；不自动导入该导出。
+
 - ePrint 2021/192《Quantum Indifferentiability of SHA-3》在检索中出现，但本轮不纳入可靠结论链。2025 论文明确把相关证明障碍作为新突破；应先核旧稿更正、撤回/缺陷记录，不可将两个“首次”简单并列。
 - “A Note on Quantum-Secure PRPs” 检索显示已有 Quantum 2025 正式版本（DOI 10.22331/q-2025-04-08-1696），是 P01 与 P13 间值得补读的计算假设构造背景。本轮没有完整核作者/正文，因此不列为已完成卡片。
 - 不把量子消息加密、pseudorandom quantum states、量子认证 quantum messages、量子货币等相邻方向算成“经典对称加密抗量子攻击”。格基 OPRF、对称原语支撑 PQ 签名属于外延应用，应另分层。
 - 本轮正式旧文保留 JACM / EUROCRYPT 等有明确元数据的版本；没有因 DBLP 存在 ePrint 记录而推定经过同行评审。P16、P17 的正式卷目证据尚弱于其余正式条目，已单独标注。
 
-
-
 <a id="application-catalog"></a>
 
 ## 12. 应用扩展与邻接方向：完整记录
 
-文献截止日期：2026-09-08。实际检索跨越台湾时间 2026-09-08 至 09-09 午夜。本文是总调研的专题分报告，保留 14 篇核心文献；最新文章尚未录用时仍保留并明确标注。本轮以 IACR ePrint / apaper MCP 为发现入口，以 DBLP、ePrint 官方页和出版社页面核验。**阅读主要为摘要级，不代表已逐一定理审计或复现实验。**
+文献截止日期：2026-09-08。实际检索跨越台湾时间 2026-09-08 至 09-09 午夜。本文是总调研的专题分报告，保留 15 篇核心文献；最新文章尚未录用时仍保留并明确标注。本轮以 IACR ePrint / apaper MCP 为发现入口，以 DBLP、ePrint 官方页和出版社页面核验。**阅读主要为摘要级，不代表已逐一定理审计或复现实验。**
 
 ### 范围与重点
 
@@ -649,7 +752,7 @@ Q1 通常允许攻击者量子计算，但对部署中的秘密钥接口只作�
 1. **分布式认证加密与密钥托管。** 从 CCS 2018 的 DiSE 框架，经 ACNS 2024 的半诚实量子安全 DPRF，进展到 2026 年的 QROM 自适应 DiSE；重点是门限安全、腐化模型及在线成本，见 E01–E03。
 2. **PQC 可搜索加密。** 兼顾合取查询、动态更新、前向/后向隐私、结果可验证性与具体效率，见 E04–E05。标题中的 efficient 与 post-quantum 可能对应不同实例，必须逐一核对。
 3. **面向证明系统的对称原语。** 一条路复用 AES 并优化树、承诺和 QROM 证明，另一条路为 VOLEitH/AO 场景设计低乘法复杂度原语。近期攻击提示低次数结构可能抵消性能收益，见 E06–E11。
-4. **哈希签名的组合优化与状态管理。** 成熟基础之上仍有编码下界、大小/验证时间折衷、多 HSM 状态一致性问题，见 E12–E14。
+4. **哈希签名的组合优化与状态管理。** 成熟基础之上仍有编码下界、大小/验证时间折衷、多 HSM 状态一致性及机器可检查的安全证明问题，见 E12–E15。
 
 这些是检索中得到的代表性热点，不能据此声称穷尽公开研究。具体选题还需要对最接近的工作做正文阅读和更新检索。
 
@@ -661,16 +764,17 @@ Q1 通常允许攻击者量子计算，但对部署中的秘密钥接口只作�
 | E02 | Efficient Quantum-Safe Distributed PRF and Applications: Playing DiSE in a Quantum World | 2024；ePrint 2025 | 已发表 ACNS 2024；DBLP + ePrint |
 | E03 | EQuADiSE: Efficient Quantum-safe Adaptive Distributed Symmetric-key Encryption | 2026 | ePrint 明示 ESORICS 2026 将发表；已录用信息来自作者，待独立出版核验 |
 | E04 | Efficient and Post-Quantum Conjunctive Dynamic SSE with Strong Privacy Guarantees | 2026 | 已发表 PKC 2026, Part IV: 302–334；DBLP + ePrint |
-| E05 | Ring-LWR based Commitments and ZK-PoKs with Application to Verifiable Quantum-Safe Searchable Symmetric Encryption | 2025 | ePrint 自报 ACM ASIACCS 2025；本轮仅找到 DBLP ePrint 记录，会议记录待补 |
+| E05 | Ring-LWR based Commitments and ZK-PoKs with Application to Verifiable Quantum-Safe Searchable Symmetric Encryption | 2025 | 已发表 ASIA CCS 2025: 283–297；DBLP conference record + ePrint |
 | E06 | Publicly Verifiable Zero-Knowledge and Post-Quantum Signatures from VOLE-in-the-Head | 2023 | 已发表 CRYPTO 2023；DBLP + ePrint（DBLP key 尾部22不是出版年份） |
 | E07 | One Tree to Rule Them All: Optimizing GGM Trees and OWFs for Post-Quantum Signatures | 2024 | 已发表 ASIACRYPT 2024；DBLP + ePrint |
-| E08 | Shorter, Tighter, FAESTer: Optimizations and Improved (QROM) Analysis for VOLE-in-the-Head Signatures | 2025；ePrint 2026 | 已发表 CRYPTO 2025；Springer 正式页 + ePrint；DBLP 搜索本轮仅定位 ePrint 记录 |
+| E08 | Shorter, Tighter, FAESTer: Optimizations and Improved (QROM) Analysis for VOLE-in-the-Head Signatures | 2025；ePrint 2026 | 已发表 CRYPTO 2025, Part VI: 124–156；DBLP + Springer 正式页 + ePrint |
 | E09 | Lynx: Symmetric Primitive for Shorter and Faster VOLE-in-the-Head Signatures | 2026 | 近期预印本；2026-05-29 首发，2026-05-31 修订 |
 | E10 | Magic Pot: Cryptanalysis of Full AIM2 in the Standard and Related-/reused-Key Settings Using New Elimination Framework | 2026 | 已发表 EUROCRYPT 2026；DBLP + ePrint（重大修订） |
 | E11 | One More Pair, More Information Gained: Improved Attacks on LowMC with Full S-box Layers Using Two Plaintext/Ciphertext Pairs | 2025 | 预印本；本轮未确认正式录用 |
 | E12 | The SPHINCS+ Signature Framework | 2019 | 已发表 ACM CCS 2019；DBLP + ePrint |
 | E13 | At the Top of the Hypercube -- Better Size-Time Tradeoffs for Hash-Based Signatures | 2025 | 已发表 CRYPTO 2025；DBLP + ePrint |
 | E14 | Secure Distributed State Management for Stateful Signatures with a Practical and Universally Composable Protocol | 2025 | 近期预印本；2025-12-18 首发，本轮未确认正式录用 |
+| E15 | Machine-Checked Security for XMSS as in RFC 8391 and SPHINCS+ | 2023 | 已发表 CRYPTO 2023, Part V: 421–454；DBLP + Springer |
 
 ### E01 · DiSE: Distributed Symmetric-key Encryption
 
@@ -731,10 +835,10 @@ Q1 通常允许攻击者量子计算，但对部署中的秘密钥接口只作�
 ### E05 · Ring-LWR based Commitments and ZK-PoKs with Application to Verifiable Quantum-Safe Searchable Symmetric Encryption
 
 **作者：** Debadrita Talapatra；Nimish Mishra；Debdeep Mukhopadhyay。\
-**年份 / 发表状态：** 2025；ePrint 自报 ACM ASIACCS 2025；本轮仅找到 DBLP ePrint 记录，会议记录待补。\
+**年份 / 发表状态：** 2025；已发表 ASIA CCS 2025: 283–297；DBLP conference record + ePrint。\
 **阅读深度：** 摘要级。\
 **BibTeX key：** `Talapatra2025VerifiableSSE`。\
-**来源：** [IACR ePrint 2025/1216](https://eprint.iacr.org/2025/1216)；[DBLP 记录](https://dblp.org/rec/journals/iacr/TalapatraMM25)。
+**来源：** [IACR ePrint 2025/1216](https://eprint.iacr.org/2025/1216)；[DBLP 会议记录](https://dblp.org/rec/conf/asiaccs/TalapatraMM25)；[正式 DOI](https://doi.org/10.1145/3708821.3736223)。
 
 从 RLWR 承诺和多项式线性关系的知识证明出发，为既有 LWR-SSE 加入搜索结果正确性验证。作者报告短证明和较小额外验证成本。
 
@@ -773,10 +877,10 @@ Q1 通常允许攻击者量子计算，但对部署中的秘密钥接口只作�
 ### E08 · Shorter, Tighter, FAESTer: Optimizations and Improved (QROM) Analysis for VOLE-in-the-Head Signatures
 
 **作者：** Carsten Baum；Ward Beullens；Lennart Braun；Cyprien Delpech de Saint Guilhem；Michael Klooß；Christian Majenz；Shibam Mukherjee；Emmanuela Orsini；Sebastian Ramacher；Christian Rechberger；Lawrence Roy；Peter Scholl。\
-**年份 / 发表状态：** 2025；已发表 CRYPTO 2025；Springer 正式页 + ePrint；DBLP 搜索本轮仅定位 ePrint 记录。\
+**年份 / 发表状态：** 2025；已发表 CRYPTO 2025, Part VI: 124–156；DBLP + Springer 正式页 + ePrint。\
 **阅读深度：** 摘要级；并检查出版社正文脚注。\
 **BibTeX key：** `Baum2025FAESTer`。\
-**来源：** [IACR ePrint 2026/164](https://eprint.iacr.org/2026/164)；[正式 DOI](https://doi.org/10.1007/978-3-032-01887-8_5)。
+**来源：** [IACR ePrint 2026/164](https://eprint.iacr.org/2026/164)；[DBLP 会议记录](https://dblp.org/rec/conf/crypto/BaumBBGKMMORRRS25)；[正式 DOI](https://doi.org/10.1007/978-3-032-01887-8_5)。
 
 把向量承诺中部分哈希调用替换为 AES-PRG，利用 AES S-box 代数结构压缩见证，并给出 Rényi 散度技术的经典分析及相应 QROM/Fiat–Shamir 分析。
 
@@ -868,9 +972,23 @@ Q1 通常允许攻击者量子计算，但对部署中的秘密钥接口只作�
 
 **研究启发（调研判断）：** 恢复、备份、并发签名与多 HSM 场景下，状态管理是独立于量子搜索复杂度的部署研究问题。
 
+### E15 · Machine-Checked Security for XMSS as in RFC 8391 and SPHINCS+
+
+**作者：** Manuel Barbosa；François Dupressoir；Benjamin Grégoire；Andreas Hülsing；Matthias Meijers；Pierre-Yves Strub。\
+**年份 / 发表状态：** 已发表 CRYPTO 2023, Part V, pp. 421–454；DBLP 与 Springer 正式章页核验。\
+**阅读深度：** 摘要与出版元数据。\
+**BibTeX key：** `BarbosaDGHMS2023XMSS`。\
+**来源：** [ePrint 2023/408](https://eprint.iacr.org/2023/408)；[DBLP](https://dblp.org/rec/conf/crypto/BarbosaDGHMS22)；[Springer](https://link.springer.com/chapter/10.1007/978-3-031-38554-4_14)。
+
+以 EasyCrypt 形式化验证 XMSS 的紧安全证明，修补相关证明问题，并核验与 SPHINCS+ 证明共用的关键步骤。为哈希函数、签名等基础对象提供后续形式化验证可复用的库。
+
+**模型与局限：** 论文使用随机预言机建模消息哈希；本次摘要核读不能把其机器检查范围外推成完整 SLH-DSA 的 QROM 证明或实现正确性验证。没有在本仓库运行 EasyCrypt。DBLP key 尾部 `22` 不是正式发表年份；标题的数学排版标记依据 Springer 规范化。
+
+**研究启发（调研判断）：** D10 可增加“证明和参数变更如何保持可机器检查”的具体路线，并与 E12–E14 的性能及状态管理问题区分。
+
 ### 经典背景与补充追踪
 
-Picnic 路线的经典起点是 Melissa Chase、David Derler、Steven Goldfeder、Claudio Orlandi、Sebastian Ramacher、Christian Rechberger、Daniel Slamanig、Greg Zaverucha 的 *Post-Quantum Zero-Knowledge and Signatures from Symmetric-Key Primitives*，CCS 2017: 1825–1842，DOI [10.1145/3133956.3133997](https://doi.org/10.1145/3133956.3133997)，已用 [DBLP 正式会议记录](https://dblp.org/rec/conf/ccs/ChaseDGORRSZ17)核验。这里作为 E06/E11 的背景，不另外计入 14 篇核心文献。
+Picnic 路线的经典起点是 Melissa Chase、David Derler、Steven Goldfeder、Claudio Orlandi、Sebastian Ramacher、Christian Rechberger、Daniel Slamanig、Greg Zaverucha 的 *Post-Quantum Zero-Knowledge and Signatures from Symmetric-Key Primitives*，CCS 2017: 1825–1842，DOI [10.1145/3133956.3133997](https://doi.org/10.1145/3133956.3133997)，已用 [DBLP 正式会议记录](https://dblp.org/rec/conf/ccs/ChaseDGORRSZ17)核验。这里作为 E06/E11 的背景，不另外计入 15 篇核心文献。
 
 进一步值得追踪的 IACR 线索包括 [2025/981：Rain/AIM 多项式分解攻击](https://eprint.iacr.org/2025/981)、[2025/2272：AIM2 高指数修补的安全分析](https://eprint.iacr.org/2025/2272)、[2025/1999：MPCitH 的新 QROM 安全证明](https://eprint.iacr.org/2025/1999)、[2024/097：all-but-one 承诺与 half-tree](https://eprint.iacr.org/2024/097)、[2025/113：VOLEitH 门限环签名](https://eprint.iacr.org/2025/113)。这些本轮只完成发现，不用作已核验核心结论，也不把其摘要安全宣称视为审计结果。
 
@@ -886,9 +1004,59 @@ Picnic 路线的经典起点是 Melissa Chase、David Derler、Steven Goldfeder�
 
 ### 数据质量与核验记录
 
+2026-09-09 扩展检索经 MCP 发现 E15，并通过 DBLP 与 Springer 正式章页核验；没有将机构库的预印本条目状态或 DBLP key 年份后缀当作正式出版年份。
+
 - apaper MCP 的 `search_iacr_papers` 配合年份上下界出现不完整结果：2026 的 Lynx/EQuADiSE/Magic Pot 等使用 2024–2026 筛选时查不到，而无年份的 Rainier 检索能找到 2026/1099 和 2026/903。因此，本报告以官方页 History 和正式会议信息为准，MCP 返回 0 不视为不存在。
-- `search_dblp_papers(include_bibtex=true)` 的八组查询均返回 JSON 解析或 Server disconnected 错误；后续转用 DBLP 官方网页，成功核验 E01、E02、E04、E06、E07、E10、E12、E13 的正式会议记录。**DBLP 的 `journals/iacr/*` 只是 ePrint 索引，不证明论文经过同行评审。**
+- `search_dblp_papers(include_bibtex=true)` 的八组查询均返回 JSON 解析或 Server disconnected 错误；后续转用 DBLP 官方网页/搜索索引，成功核验 E01、E02、E04、E05、E06、E07、E08、E10、E12、E13 的正式会议记录。**DBLP 的 `journals/iacr/*` 只是 ePrint 索引，不证明论文经过同行评审。**
 - DBLP 原始 BibTeX 链接及页面 BibTeX 视图本轮未能取得；[applications.bib](applications.bib) 是从已读取的官方元数据整理的 BibTeX，文件头明确标注来源转录，并保留可重试的 DBLP `biburl`。不把它冒充成功下载的 DBLP 原始 BIB。
-- E08 的正式出版年份、页码与 DOI 由 [Springer 正式页](https://link.springer.com/chapter/10.1007/978-3-032-01887-8_5)确认；官方脚注 3 说明其分析不把 AES 视作理想密码。E03 的 ESORICS 2026 信息、E05 的 ASIACCS 2025 信息在本轮仍主要依赖 ePrint 作者填写元数据，已单列该证据强度。
+- E05 的正式页码与 DOI 已由 DBLP conference record、ACM DOI 索引及 ePrint 交叉确认；E08 的正式出版年份、页码与 DOI 已由 DBLP conference record 与 [Springer 正式页](https://link.springer.com/chapter/10.1007/978-3-032-01887-8_5)确认。E08 官方脚注 3 说明其分析不把 AES 视作理想密码。E03 的 ESORICS 2026 信息在本轮仍主要依赖 ePrint 作者填写元数据，已单列该证据强度。
 - 原始 MCP 查询日志仅作为本地辅助材料保留在 `evidence/applications-mcp.json`，不纳入 Git；报告已保留查询方式、论文来源与核验结论。对于最新预印本，未找到录用证据只记“未确认”，不记“未录用”。
 - 本轮未收录泛泛声称“量子安全”的边缘应用文章；例如某些神经泄漏 LowMC 文章依赖额外泄漏模型，若不先核实模型与实现的联系，不宜作为标准 LowMC 安全被破坏的证据。
+
+<a id="search-audit"></a>
+
+## 13. 并行扩展检索与引用核验
+
+核验日期：2026-09-09（Asia/Taipei）；沿用文献截点 2026-09-08。原有 54 篇基础上新增 10 篇，合计 64 篇研究论文及 4 条官方背景资料。本记录说明本轮实际调用、采用理由及字段核验边界；不宣称重审全部旧文献或复现论文证明。
+
+### 实际检索渠道
+
+独立查询通过 `functions.exec` 中的 `Promise.allSettled` 并发发出；精确标题核验依赖前一轮结果，随后分批执行。
+
+- **DBLP MCP**：`search_dblp_papers`，查询 `post quantum symmetric`（2023–2026，15 条上限，带 BibTeX）与 `quantum collision`（8 条上限，不带 BibTeX）。两次均返回 JSON 解析失败；未取得原始 DBLP BibTeX。
+- **Google Scholar MCP**：`search_google_scholar_papers`，查询 `"quantum" "symmetric" cryptography`（2024–2026，12 条上限），返回空。没有把它记为成功的引用核验来源。
+- **arXiv MCP**：`search_arxiv_papers`，窄查询 `(all:"symmetric cryptography" OR all:"symmetric cryptanalysis") AND (all:quantum)` 返回空；宽查询 `quantum AES` 返回 10 条，夹杂量子计算、部署与无关主题，逐项筛选。A20 最终由在线搜索发现，并直接核 arXiv 原始页面。
+- **IACR MCP**：`search_iacr_papers` 的 `quantum collision multi target` 返回 6 条；`quantum security double encryption` 返回 8 条；`"Quantum Circuits of AES"` 返回 5 条。部分结果作者字段为空；用原始稿件或出版页补核，不从缺失字段推断作者。
+- **在线搜索**：并行检索 DBLP 的 quantum/symmetric、AES、collision、Feistel（2024/2025）分支，并精确回查候选标题；再访问 Springer 章页、IEEE QCE 正式名单、arXiv、Inria/高校作者页面与作者 artifact。DBLP 有些直达页面受反爬限制，成功证据来自其正式域名搜索索引和会议/作者目录；本轮没有把镜像站或普通二手转载作为最终依据。
+
+MCP 的检索上限、排序、年份过滤和空结果均不足以证明穷尽；arXiv 宽查询还出现明显无关结果，因此不用返回条数衡量领域规模。
+
+### 新增引用的逐条核验
+
+下面的“核验”指书目身份、发表状态及摘要对应关系。全部作者已写入分组及统一 BibTeX；只有列出的字段有来源支持时才填写。新 BibTeX 为转录结果，`biburl` 是可重试入口，不代表本次下载成功。
+
+| 编号 | 研究论文与来源 | 已核字段及最终处理 |
+|---|---|---|
+| A17 | Quantum Circuits of AES with a Low-Depth Linear Layer and a New Structure；[DBLP](https://dblp.org/rec/conf/asiacrypt/ShiF24)、[Springer](https://link.springer.com/chapter/10.1007/978-981-96-0944-4_12)、[原稿](https://eprint.iacr.org/2024/381) | 2 位作者、精确标题、ASIACRYPT VIII、358–395、DOI。会议/DBLP 年 2024；Springer 引文版权年 2025，首次在线 2024-12-12，分别说明。 |
+| A18 | Classical and Quantum Generic Attacks on 6-Round Feistel Schemes；[DBLP](https://dblp.org/rec/conf/sacrypt/ChartounyCP24)、[Springer](https://link.springer.com/chapter/10.1007/978-3-031-82841-6_4)、[原稿](https://eprint.iacr.org/2024/458) | 3 位作者、标题、SAC II、85–111、DOI；会议年 2024，正式在线 2025-03-13。ePrint 的 Preprint 标签滞后，按正式记录纳入。 |
+| A19 | Single-Query Quantum Hidden Shift Attacks；[DBLP](https://dblp.org/rec/journals/tosc/BonnetainS24)、[IACR](https://eprint.iacr.org/2023/1306)、[Inria](https://rex-radar.inria.fr/report/2024/caramba/index.html) | 2 位作者、标题、ToSC 2024(3)、266–297、预印本 2023/1306。未取得官方 DOI 字段，省略。 |
+| A20 | A Tight Quantum Algorithm for Multiple Collision Search；[arXiv](https://arxiv.org/abs/2509.13909)、[DBLP informal](https://dblp.org/rec/journals/iacr/BonnetainLSS25)、[作者列表](https://johanna-loyer.github.io/page-personnelle/) | 4 位作者、标题、arXiv v1 日期 2025-09-17、ePrint 2025/1690 与 arXiv DOI；未确认正式发表，使用 misc，不能把 DOI 或 DBLP 编目当作录用。 |
+| A21 | An Efficient Quantum Collision Search Algorithm and Implications on Symmetric Cryptography；[DBLP](https://dblp.org/rec/conf/asiacrypt/ChaillouxNS17)、[原稿](https://eprint.iacr.org/2017/847) | 3 位作者、标题、ASIACRYPT II 2017、211–240、DOI 10.1007/978-3-319-70697-9_8；摘要对应碰撞/多目标任务。 |
+| A22 | A Quantum Circuit to Execute a Key-Recovery Attack Against the DES and 3DES Block Ciphers；[DBLP](https://dblp.org/rec/conf/qce/PerrielloBP24)、[IEEE 名单](https://qce.quantum.ieee.org/2024/wp-content/uploads/sites/8/2024/08/QCE24-Accepted-Technical-Papers-by-Track-QALG-QSYS-QAPP-QPHO-QNET-QTEM-QML.pdf)、[作者 artifact](https://github.com/paper-codes/2024-QCE) | 3 位作者、标题、QCE 2024、1–12；DOI 10.1109/QCE60285.2024.00011 由作者书目确认。IEEE DOI 落地页访问失败；代码只读说明，未执行。 |
+| A23 | Improved Meet-in-the-Middle Nostradamus Attacks on AES-like Hashing；[DBLP](https://dblp.uni-trier.de/rec/journals/tosc/DongGLPZ24.html)、[原稿](https://eprint.iacr.org/2024/352)、[作者组](https://catf.crypto.sg/mitm) | 5 位作者、标题、ToSC 2024(1)、158–187、DOI 10.46586/tosc.v2024.i1.158-187。弃用预印本 PDF 的占位 DOI。 |
+| P18 | Quantum Key-Length Extension；[DBLP](https://dblp.org/rec/conf/tcc/JaegerST21)、[Springer](https://link.springer.com/chapter/10.1007/978-3-030-90459-3_8)、[作者机构库](https://pdxscholar.library.pdx.edu/compsci_fac/287/) | 3 位作者、标题、TCC I 2021、209–239、DOI。FX 与双重加密的查询模型分别记录。 |
+| P19 | Hybrid-Query Bounds with Partial Input Control Framework and Application to Tight M-eTCR；[DBLP](https://dblp.org/rec/conf/asiacrypt/HulsingKM25)、[Springer](https://link.springer.com/chapter/10.1007/978-981-95-5125-5_9)、[原稿](https://eprint.iacr.org/2025/633) | 3 位作者、标题、ASIACRYPT VIII 2025、256–286、DOI。Springer 版权年 2026 与会议年分开；机构库将作者误置 editor 的导出未直接采用。 |
+| E15 | Machine-Checked Security for XMSS as in RFC 8391 and SPHINCS+；[DBLP](https://dblp.org/rec/conf/crypto/BarbosaDGHMS22)、[Springer](https://link.springer.com/chapter/10.1007/978-3-031-38554-4_14)、[原稿](https://eprint.iacr.org/2023/408) | 6 位作者、标题、CRYPTO V 2023、421–454、DOI。DBLP key 的 22 后缀和标题渲染残留不用于推定年份或算法名。 |
+
+### 已有引用的修订
+
+- **A09**：Quantum Periodic Distinguisher Construction: Symbolization Method and Automated Tool。用 [DBLP](https://dblp.org/rec/conf/asiacrypt/LiuWWLW25) 与 [Springer 正式章页](https://link.springer.com/chapter/10.1007/978-981-95-5125-5_8) 补核 ASIACRYPT VIII 2025、224–255、DOI；由 misc 改为 inproceedings，保留 ePrint 2025/681 版本说明。
+- **P11**：Generic Composition: From Classical to Quantum Security。用 [DBLP](https://dblp.org/rec/conf/pqcrypto/LangLL26) 与 [Springer 正式章页](https://link.springer.com/chapter/10.1007/978-3-032-22695-2_2) 确认 PQCrypto I 2026、37–70、首次在线 2026-04-10；更新出版年和 DOI，保留 2025 年预印本链接及兼容性 citation key。
+- 先前核验的 E05/E08 修改继续保留；其余旧条目沿用前一轮证据，本次没有将“新增十篇已核验”转述为“全部旧引文重新审计完成”。
+
+### 筛选与未纳入结果
+
+- IACR 返回的 KEM 多目标安全、anamorphic messaging、FO/KDM 等结果未作为本轮新增核心论文：主要对象为公钥或消息协议，需另做系统扩展专题。
+- 宽 arXiv 查询中的电网/云存储混合 PQC 部署、量子采样和模型降阶文章未纳入；共同出现 AES/quantum 不能替代对称原语的具体研究贡献。
+- MCP 还发现量子多重碰撞与 CNOT 综合线索，但本轮未为它们完成同等级的发表字段核验，故不新增正式引用。本文不提供未经核对的作者、DOI 或 venue 以填充数量。
+- 源码 artifact、机构列表和会议目录分别用于核验实现可获得性、署名或出版身份；这些证据不代表我们已运行 artifact、检查定理或证明实验可复现。

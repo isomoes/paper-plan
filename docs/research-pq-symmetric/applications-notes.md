@@ -1,6 +1,6 @@
 # 后量子对称密码的应用扩展与邻接方向
 
-文献截止日期：2026-09-08。实际检索跨越台湾时间 2026-09-08 至 09-09 午夜。本文是总调研的专题分报告，保留 14 篇核心文献；最新文章尚未录用时仍保留并明确标注。本轮以 IACR ePrint / apaper MCP 为发现入口，以 DBLP、ePrint 官方页和出版社页面核验。**阅读主要为摘要级，不代表已逐一定理审计或复现实验。**
+文献截止日期：2026-09-08。实际检索跨越台湾时间 2026-09-08 至 09-09 午夜。本文是总调研的专题分报告，保留 15 篇核心文献；最新文章尚未录用时仍保留并明确标注。本轮以 IACR ePrint / apaper MCP 为发现入口，以 DBLP、ePrint 官方页和出版社页面核验。**阅读主要为摘要级，不代表已逐一定理审计或复现实验。**
 
 ## 范围与重点
 
@@ -11,7 +11,7 @@
 1. **分布式认证加密与密钥托管。** 从 CCS 2018 的 DiSE 框架，经 ACNS 2024 的半诚实量子安全 DPRF，进展到 2026 年的 QROM 自适应 DiSE；重点是门限安全、腐化模型及在线成本，见 E01–E03。
 2. **PQC 可搜索加密。** 兼顾合取查询、动态更新、前向/后向隐私、结果可验证性与具体效率，见 E04–E05。标题中的 efficient 与 post-quantum 可能对应不同实例，必须逐一核对。
 3. **面向证明系统的对称原语。** 一条路复用 AES 并优化树、承诺和 QROM 证明，另一条路为 VOLEitH/AO 场景设计低乘法复杂度原语。近期攻击提示低次数结构可能抵消性能收益，见 E06–E11。
-4. **哈希签名的组合优化与状态管理。** 成熟基础之上仍有编码下界、大小/验证时间折衷、多 HSM 状态一致性问题，见 E12–E14。
+4. **哈希签名的组合优化与状态管理。** 成熟基础之上仍有编码下界、大小/验证时间折衷、多 HSM 状态一致性及机器可检查的安全证明问题，见 E12–E15。
 
 这些是检索中得到的代表性热点，不能据此声称穷尽公开研究。具体选题还需要对最接近的工作做正文阅读和更新检索。
 
@@ -23,16 +23,17 @@
 | E02 | Efficient Quantum-Safe Distributed PRF and Applications: Playing DiSE in a Quantum World | 2024；ePrint 2025 | 已发表 ACNS 2024；DBLP + ePrint |
 | E03 | EQuADiSE: Efficient Quantum-safe Adaptive Distributed Symmetric-key Encryption | 2026 | ePrint 明示 ESORICS 2026 将发表；已录用信息来自作者，待独立出版核验 |
 | E04 | Efficient and Post-Quantum Conjunctive Dynamic SSE with Strong Privacy Guarantees | 2026 | 已发表 PKC 2026, Part IV: 302–334；DBLP + ePrint |
-| E05 | Ring-LWR based Commitments and ZK-PoKs with Application to Verifiable Quantum-Safe Searchable Symmetric Encryption | 2025 | ePrint 自报 ACM ASIACCS 2025；本轮仅找到 DBLP ePrint 记录，会议记录待补 |
+| E05 | Ring-LWR based Commitments and ZK-PoKs with Application to Verifiable Quantum-Safe Searchable Symmetric Encryption | 2025 | 已发表 ASIA CCS 2025: 283–297；DBLP conference record + ePrint |
 | E06 | Publicly Verifiable Zero-Knowledge and Post-Quantum Signatures from VOLE-in-the-Head | 2023 | 已发表 CRYPTO 2023；DBLP + ePrint（DBLP key 尾部22不是出版年份） |
 | E07 | One Tree to Rule Them All: Optimizing GGM Trees and OWFs for Post-Quantum Signatures | 2024 | 已发表 ASIACRYPT 2024；DBLP + ePrint |
-| E08 | Shorter, Tighter, FAESTer: Optimizations and Improved (QROM) Analysis for VOLE-in-the-Head Signatures | 2025；ePrint 2026 | 已发表 CRYPTO 2025；Springer 正式页 + ePrint；DBLP 搜索本轮仅定位 ePrint 记录 |
+| E08 | Shorter, Tighter, FAESTer: Optimizations and Improved (QROM) Analysis for VOLE-in-the-Head Signatures | 2025；ePrint 2026 | 已发表 CRYPTO 2025, Part VI: 124–156；DBLP + Springer 正式页 + ePrint |
 | E09 | Lynx: Symmetric Primitive for Shorter and Faster VOLE-in-the-Head Signatures | 2026 | 近期预印本；2026-05-29 首发，2026-05-31 修订 |
 | E10 | Magic Pot: Cryptanalysis of Full AIM2 in the Standard and Related-/reused-Key Settings Using New Elimination Framework | 2026 | 已发表 EUROCRYPT 2026；DBLP + ePrint（重大修订） |
 | E11 | One More Pair, More Information Gained: Improved Attacks on LowMC with Full S-box Layers Using Two Plaintext/Ciphertext Pairs | 2025 | 预印本；本轮未确认正式录用 |
 | E12 | The SPHINCS+ Signature Framework | 2019 | 已发表 ACM CCS 2019；DBLP + ePrint |
 | E13 | At the Top of the Hypercube -- Better Size-Time Tradeoffs for Hash-Based Signatures | 2025 | 已发表 CRYPTO 2025；DBLP + ePrint |
 | E14 | Secure Distributed State Management for Stateful Signatures with a Practical and Universally Composable Protocol | 2025 | 近期预印本；2025-12-18 首发，本轮未确认正式录用 |
+| E15 | Machine-Checked Security for XMSS as in RFC 8391 and SPHINCS+ | 2023 | 已发表 CRYPTO 2023, Part V: 421–454；DBLP + Springer |
 
 ## E01 · DiSE: Distributed Symmetric-key Encryption
 
@@ -93,10 +94,10 @@
 ## E05 · Ring-LWR based Commitments and ZK-PoKs with Application to Verifiable Quantum-Safe Searchable Symmetric Encryption
 
 **作者：** Debadrita Talapatra；Nimish Mishra；Debdeep Mukhopadhyay。\
-**年份 / 发表状态：** 2025；ePrint 自报 ACM ASIACCS 2025；本轮仅找到 DBLP ePrint 记录，会议记录待补。\
+**年份 / 发表状态：** 2025；已发表 ASIA CCS 2025: 283–297；DBLP conference record + ePrint。\
 **阅读深度：** 摘要级。\
 **BibTeX key：** `Talapatra2025VerifiableSSE`。\
-**来源：** [IACR ePrint 2025/1216](https://eprint.iacr.org/2025/1216)；[DBLP 记录](https://dblp.org/rec/journals/iacr/TalapatraMM25)。
+**来源：** [IACR ePrint 2025/1216](https://eprint.iacr.org/2025/1216)；[DBLP 会议记录](https://dblp.org/rec/conf/asiaccs/TalapatraMM25)；[正式 DOI](https://doi.org/10.1145/3708821.3736223)。
 
 从 RLWR 承诺和多项式线性关系的知识证明出发，为既有 LWR-SSE 加入搜索结果正确性验证。作者报告短证明和较小额外验证成本。
 
@@ -135,10 +136,10 @@
 ## E08 · Shorter, Tighter, FAESTer: Optimizations and Improved (QROM) Analysis for VOLE-in-the-Head Signatures
 
 **作者：** Carsten Baum；Ward Beullens；Lennart Braun；Cyprien Delpech de Saint Guilhem；Michael Klooß；Christian Majenz；Shibam Mukherjee；Emmanuela Orsini；Sebastian Ramacher；Christian Rechberger；Lawrence Roy；Peter Scholl。\
-**年份 / 发表状态：** 2025；已发表 CRYPTO 2025；Springer 正式页 + ePrint；DBLP 搜索本轮仅定位 ePrint 记录。\
+**年份 / 发表状态：** 2025；已发表 CRYPTO 2025, Part VI: 124–156；DBLP + Springer 正式页 + ePrint。\
 **阅读深度：** 摘要级；并检查出版社正文脚注。\
 **BibTeX key：** `Baum2025FAESTer`。\
-**来源：** [IACR ePrint 2026/164](https://eprint.iacr.org/2026/164)；[正式 DOI](https://doi.org/10.1007/978-3-032-01887-8_5)。
+**来源：** [IACR ePrint 2026/164](https://eprint.iacr.org/2026/164)；[DBLP 会议记录](https://dblp.org/rec/conf/crypto/BaumBBGKMMORRRS25)；[正式 DOI](https://doi.org/10.1007/978-3-032-01887-8_5)。
 
 把向量承诺中部分哈希调用替换为 AES-PRG，利用 AES S-box 代数结构压缩见证，并给出 Rényi 散度技术的经典分析及相应 QROM/Fiat–Shamir 分析。
 
@@ -230,9 +231,23 @@
 
 **研究启发（调研判断）：** 恢复、备份、并发签名与多 HSM 场景下，状态管理是独立于量子搜索复杂度的部署研究问题。
 
+## E15 · Machine-Checked Security for XMSS as in RFC 8391 and SPHINCS+
+
+**作者：** Manuel Barbosa；François Dupressoir；Benjamin Grégoire；Andreas Hülsing；Matthias Meijers；Pierre-Yves Strub。\
+**年份 / 发表状态：** 已发表 CRYPTO 2023, Part V, pp. 421–454；DBLP 与 Springer 正式章页核验。\
+**阅读深度：** 摘要与出版元数据。\
+**BibTeX key：** `BarbosaDGHMS2023XMSS`。\
+**来源：** [ePrint 2023/408](https://eprint.iacr.org/2023/408)；[DBLP](https://dblp.org/rec/conf/crypto/BarbosaDGHMS22)；[Springer](https://link.springer.com/chapter/10.1007/978-3-031-38554-4_14)。
+
+以 EasyCrypt 形式化验证 XMSS 的紧安全证明，修补相关证明问题，并核验与 SPHINCS+ 证明共用的关键步骤。为哈希函数、签名等基础对象提供后续形式化验证可复用的库。
+
+**模型与局限：** 论文使用随机预言机建模消息哈希；本次摘要核读不能把其机器检查范围外推成完整 SLH-DSA 的 QROM 证明或实现正确性验证。没有在本仓库运行 EasyCrypt。DBLP key 尾部 `22` 不是正式发表年份；标题的数学排版标记依据 Springer 规范化。
+
+**研究启发（调研判断）：** D10 可增加“证明和参数变更如何保持可机器检查”的具体路线，并与 E12–E14 的性能及状态管理问题区分。
+
 ## 经典背景与补充追踪
 
-Picnic 路线的经典起点是 Melissa Chase、David Derler、Steven Goldfeder、Claudio Orlandi、Sebastian Ramacher、Christian Rechberger、Daniel Slamanig、Greg Zaverucha 的 *Post-Quantum Zero-Knowledge and Signatures from Symmetric-Key Primitives*，CCS 2017: 1825–1842，DOI [10.1145/3133956.3133997](https://doi.org/10.1145/3133956.3133997)，已用 [DBLP 正式会议记录](https://dblp.org/rec/conf/ccs/ChaseDGORRSZ17)核验。这里作为 E06/E11 的背景，不另外计入 14 篇核心文献。
+Picnic 路线的经典起点是 Melissa Chase、David Derler、Steven Goldfeder、Claudio Orlandi、Sebastian Ramacher、Christian Rechberger、Daniel Slamanig、Greg Zaverucha 的 *Post-Quantum Zero-Knowledge and Signatures from Symmetric-Key Primitives*，CCS 2017: 1825–1842，DOI [10.1145/3133956.3133997](https://doi.org/10.1145/3133956.3133997)，已用 [DBLP 正式会议记录](https://dblp.org/rec/conf/ccs/ChaseDGORRSZ17)核验。这里作为 E06/E11 的背景，不另外计入 15 篇核心文献。
 
 进一步值得追踪的 IACR 线索包括 [2025/981：Rain/AIM 多项式分解攻击](https://eprint.iacr.org/2025/981)、[2025/2272：AIM2 高指数修补的安全分析](https://eprint.iacr.org/2025/2272)、[2025/1999：MPCitH 的新 QROM 安全证明](https://eprint.iacr.org/2025/1999)、[2024/097：all-but-one 承诺与 half-tree](https://eprint.iacr.org/2024/097)、[2025/113：VOLEitH 门限环签名](https://eprint.iacr.org/2025/113)。这些本轮只完成发现，不用作已核验核心结论，也不把其摘要安全宣称视为审计结果。
 
@@ -248,9 +263,11 @@ Picnic 路线的经典起点是 Melissa Chase、David Derler、Steven Goldfeder�
 
 ## 数据质量与核验记录
 
+2026-09-09 扩展检索经 MCP 发现 E15，并通过 DBLP 与 Springer 正式章页核验；没有将机构库的预印本条目状态或 DBLP key 年份后缀当作正式出版年份。
+
 - apaper MCP 的 `search_iacr_papers` 配合年份上下界出现不完整结果：2026 的 Lynx/EQuADiSE/Magic Pot 等使用 2024–2026 筛选时查不到，而无年份的 Rainier 检索能找到 2026/1099 和 2026/903。因此，本报告以官方页 History 和正式会议信息为准，MCP 返回 0 不视为不存在。
-- `search_dblp_papers(include_bibtex=true)` 的八组查询均返回 JSON 解析或 Server disconnected 错误；后续转用 DBLP 官方网页，成功核验 E01、E02、E04、E06、E07、E10、E12、E13 的正式会议记录。**DBLP 的 `journals/iacr/*` 只是 ePrint 索引，不证明论文经过同行评审。**
+- `search_dblp_papers(include_bibtex=true)` 的八组查询均返回 JSON 解析或 Server disconnected 错误；后续转用 DBLP 官方网页/搜索索引，成功核验 E01、E02、E04、E05、E06、E07、E08、E10、E12、E13 的正式会议记录。**DBLP 的 `journals/iacr/*` 只是 ePrint 索引，不证明论文经过同行评审。**
 - DBLP 原始 BibTeX 链接及页面 BibTeX 视图本轮未能取得；[applications.bib](applications.bib) 是从已读取的官方元数据整理的 BibTeX，文件头明确标注来源转录，并保留可重试的 DBLP `biburl`。不把它冒充成功下载的 DBLP 原始 BIB。
-- E08 的正式出版年份、页码与 DOI 由 [Springer 正式页](https://link.springer.com/chapter/10.1007/978-3-032-01887-8_5)确认；官方脚注 3 说明其分析不把 AES 视作理想密码。E03 的 ESORICS 2026 信息、E05 的 ASIACCS 2025 信息在本轮仍主要依赖 ePrint 作者填写元数据，已单列该证据强度。
+- E05 的正式页码与 DOI 已由 DBLP conference record、ACM DOI 索引及 ePrint 交叉确认；E08 的正式出版年份、页码与 DOI 已由 DBLP conference record 与 [Springer 正式页](https://link.springer.com/chapter/10.1007/978-3-032-01887-8_5)确认。E08 官方脚注 3 说明其分析不把 AES 视作理想密码。E03 的 ESORICS 2026 信息在本轮仍主要依赖 ePrint 作者填写元数据，已单列该证据强度。
 - 原始 MCP 查询日志仅作为本地辅助材料保留在 `evidence/applications-mcp.json`，不纳入 Git；报告已保留查询方式、论文来源与核验结论。对于最新预印本，未找到录用证据只记“未确认”，不记“未录用”。
 - 本轮未收录泛泛声称“量子安全”的边缘应用文章；例如某些神经泄漏 LowMC 文章依赖额外泄漏模型，若不先核实模型与实现的联系，不宜作为标准 LowMC 安全被破坏的证据。
