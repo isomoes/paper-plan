@@ -2,6 +2,19 @@
 
 文献截点：2026-09-08；整理完成：2026-09-09。
 
+## 从调研启动的研究仓库
+
+2026-09-10 从本调研选出两条直接研究路线，分别建立公开仓库，并作为本仓库的 Git submodule 管理：
+
+| 路线 | 公开仓库 | 项目文档 |
+|---|---|---|
+| D1：Q1 模型下的完整 Grover oracle 量子电路优化 | [q1-grover-oracle](https://github.com/isomoes/q1-grover-oracle) | [研究计划](https://github.com/isomoes/q1-grover-oracle/blob/main/docs/research-plan.md) · [精选参考文献](https://github.com/isomoes/q1-grover-oracle/blob/main/docs/reference.md) |
+| D2–D3：对称密码的量子区分器搜索与验证 | [quantum-symmetric-distinguishers](https://github.com/isomoes/quantum-symmetric-distinguishers) | [研究计划](https://github.com/isomoes/quantum-symmetric-distinguishers/blob/main/docs/research-plan.md) · [精选参考文献](https://github.com/isomoes/quantum-symmetric-distinguishers/blob/main/docs/reference.md) |
+
+初始化版本包含研究范围、阶段目标、实验/见证模板、带注释文献与 BibTeX；尚无已完成的电路优化或攻击结果。两仓库分别记录文献版本和核验边界，不改变下方原调研的文献截点。
+
+## 调研文件
+
 - **[完整调研报告](survey.md)**：14 类研究方向、64 篇编号研究论文、近期观察与选题建议，所有逐篇记录已汇总到一个文档。
 - **[学术汇报与审阅版 Typst](report.typ)**：编译后在同目录生成 `report.pdf`。版式为 A4，保留完整调研内容，含可点击目录、64 篇论文书签、11 张表格与 68 条参考文献；文献截点仍为 2026-09-08。
 - **[研究组分享幻灯片](presentation.typ)**：基于报告提炼的中文 16:9 演示，16 页主讲（含封面）与 4 页问答附录，适合 15-20 分钟研究组分享；编译生成 `presentation.pdf`。

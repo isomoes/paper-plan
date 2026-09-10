@@ -2,6 +2,23 @@
 
 Planning and tracking research papers
 
+## Research projects
+
+Two public research repositories grow out of the post-quantum symmetric cryptography survey. They are tracked here as Git submodules.
+
+| Project | Scope | Documentation |
+|---|---|---|
+| [Q1 Grover Oracle Optimization](https://github.com/isomoes/q1-grover-oracle) | Optimize complete quantum key-search oracles under explicit Q1 and resource assumptions | [Research plan](https://github.com/isomoes/q1-grover-oracle/blob/main/docs/research-plan.md) · [Papers](https://github.com/isomoes/q1-grover-oracle/blob/main/docs/reference.md) |
+| [Quantum Symmetric Distinguishers](https://github.com/isomoes/quantum-symmetric-distinguishers) | Search for and independently validate structural distinguishers with explicit Q1/Q2 models | [Research plan](https://github.com/isomoes/quantum-symmetric-distinguishers/blob/main/docs/research-plan.md) · [Papers](https://github.com/isomoes/quantum-symmetric-distinguishers/blob/main/docs/reference.md) |
+
+Initialize all submodules after cloning:
+
+```sh
+git submodule update --init --recursive
+```
+
+Local checkouts are `research/q1-grover-oracle/` and `research/quantum-symmetric-distinguishers/`. Both projects begin with research plans, annotated references, BibTeX, and experiment templates. Implementations and research results are subsequent milestones.
+
 ## Research reports
 
 - [后量子对称密码调研：研究方向、热点与论文记录](docs/research-pq-symmetric/survey.md) — 文献截止 2026-09-08，覆盖 14 类方向、64 篇论文；附发表状态核验、模型限制和选题建议。

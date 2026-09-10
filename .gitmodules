@@ -1,3 +1,9 @@
 [submodule "typesetting"]
 	path = typesetting
 	url = https://github.com/isomoes/typesetting.git
+[submodule "research/q1-grover-oracle"]
+	path = research/q1-grover-oracle
+	url = https://github.com/isomoes/q1-grover-oracle.git
+[submodule "research/quantum-symmetric-distinguishers"]
+	path = research/quantum-symmetric-distinguishers
+	url = https://github.com/isomoes/quantum-symmetric-distinguishers.git
