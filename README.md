@@ -21,31 +21,15 @@ Local checkouts are `research/q1-grover-oracle/` and `research/quantum-symmetric
 
 ## Research reports
 
-- [后量子对称密码调研：研究方向、热点与论文记录](docs/research-pq-symmetric/survey.md) — 文献截止 2026-09-08，覆盖 14 类方向、64 篇论文；附发表状态核验、模型限制和选题建议。
-- [统一 BibTeX](docs/research-pq-symmetric/references.bib) · [专题索引](docs/research-pq-symmetric/README.md)
-- [学术汇报与审阅版 Typst](docs/research-pq-symmetric/report.typ)，沿用 `typesetting/academic/report.typ` 版式，含完整论文记录、目录与参考文献；编译后生成同目录的 `report.pdf`。
-- [研究组分享幻灯片](docs/research-pq-symmetric/presentation.typ)，沿用 `typesetting/presentations/simple.typ` 的 Touying Simple 主题；中文 16:9，16 页主讲与 4 页附录，适合 15-20 分钟分享。含讲者备注与论文链接，[编译说明](docs/research-pq-symmetric/README.md#研究组分享幻灯片)。
+- [Post-quantum symmetric cryptography survey: research directions, trends, and paper records](docs/research-pq-symmetric/survey.md) — Literature through 2026-09-08, covering 14 research areas and 64 papers, with publication status checks, model limitations, and topic recommendations.
+- [Consolidated BibTeX](docs/research-pq-symmetric/references.bib) · [Topic index](docs/research-pq-symmetric/README.md)
+- [Typst report for academic presentations and review](docs/research-pq-symmetric/report.typ), using the `typesetting/academic/report.typ` layout, includes complete paper records, a table of contents, and references. Compiling produces `report.pdf` in the same directory.
+- [Research group presentation slides](docs/research-pq-symmetric/presentation.typ), using the Touying Simple theme from `typesetting/presentations/simple.typ`: Chinese-language slides in 16:9 format, with 16 main slides and 4 appendix slides, suitable for a 15–20 minute presentation. Includes speaker notes and paper links. See the [compilation instructions](docs/research-pq-symmetric/README.md#%E7%A0%94%E7%A9%B6%E7%BB%84%E5%88%86%E4%BA%AB%E5%B9%BB%E7%81%AF%E7%89%87).
 
-在仓库根目录运行 `typst compile --root . docs/research-pq-symmetric/report.typ` 即可生成 PDF；需要 Typst 和中文字体，详见[排版说明](docs/research-pq-symmetric/README.md#pdf-排版与重新生成)。Git 保留报告源文件与文档，PDF、本地转换脚本和临时文件不纳入版本控制。
+Run `typst compile --root . docs/research-pq-symmetric/report.typ` from the repository root to generate the PDF. Typst and Chinese fonts are required; see the [typesetting instructions](docs/research-pq-symmetric/README.md#pdf-%E6%8E%92%E7%89%88%E4%B8%8E%E9%87%8D%E6%96%B0%E7%94%9F%E6%88%90). Git tracks the report sources and documentation; PDFs, local conversion scripts, and temporary files are excluded from version control.
 
 ## Academic paper tools
 
 [apaper-mcp](https://github.com/ai4paper/apaper-mcp) is configured for this
 repository in `.codex/config.toml`. It provides search tools for arXiv, IACR,
 DBLP, Google Scholar, and CNKI, plus supported PDF downloads.
-
-Install `uv` and have Python 3.12+ available. Codex launches the package without a version pin
-through `uvx`, which manages its dependencies in the shared uv cache:
-
-```sh
-uvx apaper-mcp
-```
-
-The MCP configuration is scoped to this repository and contains no absolute
-checkout paths. No repo-local virtual environment is needed. Restart Codex's MCP
-servers or reopen Codex after configuration changes, with this repository trusted
-so its project configuration loads.
-
-IACR downloads use Chromium from `PATH`; set `IACR_BROWSER_EXECUTABLE` in the
-server's environment for a nonstandard browser path. CNKI requires institutional
-access. Tool calls have a 15-minute timeout for browser-assisted downloads.
